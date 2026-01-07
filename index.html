@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JettaX | Info</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/JettaXP/pix/main/Untitled.svg">
+    
     <style>
         body { margin: 0; background: #0f0f12; color: white; font-family: 'Comfortaa', cursive; min-height: 250vh; overflow-x: hidden; }
         
-        /* --- ПРИВЕТСТВЕННОЕ ОКНО (WELCOME OVERLAY) --- */
         #welcome-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(15, 15, 18, 0.95);
@@ -39,7 +41,6 @@
         }
         @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-        /* --- ОКНО С УСТРОЙСТВАМИ (DEVICES OVERLAY) --- */
         #devices-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(15, 15, 18, 0.95);
@@ -72,42 +73,17 @@
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .device-category h3 {
-            font-size: 1.1rem; color: #ffb4a2; margin-bottom: 15px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .device-item {
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            border-left: 3px solid #bb86fc;
-        }
+        .device-category h3 { font-size: 1.1rem; color: #ffb4a2; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .device-item { padding: 12px 15px; margin-bottom: 10px; background: rgba(255, 255, 255, 0.03); border-radius: 12px; border-left: 3px solid #bb86fc; }
         .device-item:last-child { margin-bottom: 0; }
-        .device-name {
-            font-size: 0.95rem; font-weight: bold; color: white;
-            margin-bottom: 5px;
-        }
-        .device-specs {
-            font-size: 0.8rem; color: rgba(255, 255, 255, 0.6);
-            line-height: 1.4;
-        }
-        .device-status {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 8px;
-            font-size: 0.7rem;
-            margin-top: 5px;
-        }
+        .device-name { font-size: 0.95rem; font-weight: bold; color: white; margin-bottom: 5px; }
+        .device-specs { font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); line-height: 1.4; }
+        .device-status { display: inline-block; padding: 3px 8px; border-radius: 8px; font-size: 0.7rem; margin-top: 5px; }
         .status-default { background: rgba(0, 255, 0, 0.15); color: #00ff88; }
         .status-secondary { background: rgba(255, 165, 0, 0.15); color: #ffa500; }
         .status-rip { background: rgba(255, 99, 71, 0.15); color: #ff6347; }
-        .devices-close-hint {
-            margin-top: 20px; font-size: 0.75rem; color: rgba(187, 134, 252, 0.5);
-            text-align: center; text-transform: uppercase; letter-spacing: 2px;
-        }
+        .devices-close-hint { margin-top: 20px; font-size: 0.75rem; color: rgba(187, 134, 252, 0.5); text-align: center; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- ОСНОВНОЙ КОНТЕНТ --- */
         .content { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; pointer-events: none; opacity: 0; transition: 1s ease; }
         .content.show { opacity: 1; }
 
@@ -147,8 +123,8 @@
             <h2>Привет! Я JettaX</h2>
             <p>Меня зовут Филипп. Я из Украины, живу в прекрасном городе Днепр.</p>
             <div class="figma-tag">
-                <svg width="14" height="21" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38H19V28.5Z" fill="#1ABCFE"/><path d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 33.7467 38H19V28.5Z" fill="#0ACF83"/><path d="M19 0H28.5C33.7467 0 38 4.2533 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z" fill="#FF7262"/><path d="M0 9.5C0 4.2533 4.2533 0 9.5 0H19V19H9.5C4.2533 19 0 14.7467 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5C0 23.2533 4.2533 19 9.5 19H19V38H9.5C4.2533 38 0 33.7467 0 28.5Z" fill="#A259FF"/></svg>
-                Изучаю Figma и творю всякое (я новичок)
+                <svg width="14" height="21" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38H19V28.5Z" fill="#1ABCFE"/><path d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 0 47.5Z" fill="#0ACF83"/><path d="M19 0H28.5C33.7467 0 38 4.2533 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z" fill="#FF7262"/><path d="M0 9.5C0 4.2533 4.2533 0 9.5 0H19V19H9.5C4.2533 19 0 14.7467 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5C0 23.2533 4.2533 19 9.5 19H19V38H9.5C4.2533 38 0 33.7467 0 28.5Z" fill="#A259FF"/></svg>
+                Изучаю Figma и творю всякое (новичок)
             </div>
             <div class="tap-hint">Нажми на экран, чтобы войти</div>
         </div>
@@ -157,7 +133,6 @@
     <div id="devices-overlay" onclick="closeDevices(event)">
         <div class="devices-card" onclick="event.stopPropagation()">
             <h2>Мои устройства</h2>
-            
             <div class="device-category">
                 <h3>📱 Телефоны</h3>
                 <div class="device-item">
@@ -169,7 +144,6 @@
                     <div class="device-specs">Резервный телефон</div>
                 </div>
             </div>
-
             <div class="device-category">
                 <h3>💻 ПК</h3>
                 <div class="device-item">
@@ -177,7 +151,6 @@
                     <div class="device-specs">Intel Core i3-10105F @ 3.70GHz<br>NVIDIA GTX 950<br>16GB DDR4</div>
                 </div>
             </div>
-
             <div class="device-category">
                 <h3>💻 Ноутбук</h3>
                 <div class="device-item">
@@ -185,35 +158,44 @@
                     <div class="device-specs">Рабочий ноутбук</div>
                 </div>
             </div>
-
             <div class="device-category">
                 <h3>⏰ Гаджеты</h3>
                 <div class="device-item">
                     <div class="device-name">Pixel Watch 1</div>
-                    <div class="device-specs">Умные часы от Google</div>
+                    <div class="device-specs">Часы на Wear OS</div>
                 </div>
                 <div class="device-item">
                     <div class="device-name">Pixel Buds A-series</div>
                     <div class="device-specs">Беспроводные наушники</div>
                 </div>
             </div>
-
             <div class="devices-close-hint">Нажми вне окна, чтобы закрыть</div>
         </div>
     </div>
 
     <div class="time-widget-container"><div class="glass-pill timezone-badge">UTC +2</div><div class="glass-pill clock-box" id="myClock">00:00:00</div></div>
+    
     <div class="content" id="main-content">
-        <div class="profile-wrapper"><div class="profile-container"><img src="avatar.svg"></div><h1>JettaX</h1></div>
+        <div class="profile-wrapper">
+            <div class="profile-container">
+                <img src="https://raw.githubusercontent.com/JettaXP/pix/main/Untitled.svg" alt="Avatar">
+            </div>
+            <h1>JettaX</h1>
+        </div>
         <div class="md3-surface">
-            <div class="player-section"><div class="player-top"><button class="play-btn" id="playBtn"><svg id="playIcon" viewBox="0 0 24 24" width="20"><path d="M8 5v14l11-7z"/></svg></button>
-            <div style="flex-grow:1;height:30px;"><svg width="100%" height="100%" viewBox="0 0 150 40" preserveAspectRatio="none"><path class="wave-path" id="wave" d="M 0 20 L 150 20" /></svg></div></div>
-            <div class="time-info"><span id="curr">0:00</span><span id="dur">0:00</span></div></div>
+            <div class="player-section">
+                <div class="player-top">
+                    <button class="play-btn" id="playBtn"><svg id="playIcon" viewBox="0 0 24 24" width="20"><path d="M8 5v14l11-7z"/></svg></button>
+                    <div style="flex-grow:1;height:30px;"><svg width="100%" height="100%" viewBox="0 0 150 40" preserveAspectRatio="none"><path class="wave-path" id="wave" d="M 0 20 L 150 20" /></svg></div>
+                </div>
+                <div class="time-info"><span id="curr">0:00</span><span id="dur">0:00</span></div>
+            </div>
             <div class="links-section">
                 <a href="https://t.me/jettaxp" class="link-item"><div class="icon-box"><img src="https://camo.githubusercontent.com/3e727a8e2e5eb5eba15130a4e9abd6dd1e433816d7973b3324a7b81f9630a1e2/68747470733a2f2f692e696d6775722e636f6d2f35456d786576502e706e67"></div><div class="link-content"><span class="link-title">Telegram</span><span class="link-subtitle">@jettaxp</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
                 <a href="https://www.tiktok.com/@jettax03" class="link-item"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/9f0a36013bb2d0dc2a27e18c6e8b377dee25dfbf/tiktok-simplified-black-icon.svg"></div><div class="link-content"><span class="link-title">TikTok</span><span class="link-subtitle">@jettax03</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
-                <a href="https://steamcommunity.com/id/jettaxp" class="link-item"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/b5c3ad2418eabf11fbd71577b5a1252700ee5b6a/Symbol.svg"></div><div class="link-content"><span class="link-title">Steam</span><span class="link-subtitle">jettaxp</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
-                <div class="link-item" style="cursor:pointer" onclick="showDevices()"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/b5c3ad2418eabf11fbd71577b5a1252700ee5b6a/discord-square-color-icon.svg"></div><div class="link-content"><span class="link-title">Мои устройства</span><span class="link-subtitle">Техника которую я использую</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
+                <a href="https://steamcommunity.com/id/jettaxp" class="link-item"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/139df1c184f107fe5508548a0ef65174a6928b41/Symbol.svg"></div><div class="link-content"><span class="link-title">Steam</span><span class="link-subtitle">jettaxp</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+                <div class="link-item" style="cursor:pointer" onclick="showDevices()"><div class="icon-box"><img src="https://github.com/JettaXP/pix/blob/main/free-icon-responsive-566107.png?raw=true"></div><div class="link-content"><span class="link-title">Мои устройства</span><span class="link-subtitle">Техника которую я использую</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>
+                <div class="link-item" style="cursor:default"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/139df1c184f107fe5508548a0ef65174a6928b41/discord-square-color-icon.svg"></div><div class="link-content"><span class="link-title">Discord</span><span class="link-subtitle">jettax03</span></div></div>
                 <div class="link-item" style="cursor:default"><div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg"></div><div class="link-content"><span class="link-title">Epic Games</span><span class="link-subtitle">JettaXP</span></div></div>
                 <a href="https://link.clashroyale.com/invite/friend/ru/?tag=QCVVRCQ99&token=4a37sybn" class="link-item"><div class="game-icon-box"><img src="https://github.com/JettaXP/pix/blob/main/idGWN7GzkZ_1767732695435.jpeg?raw=true"></div><div class="link-content"><span class="link-title">Clash Royale</span><span class="link-subtitle">JettaXGG</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
                 <a href="https://link.brawlstars.com/invite/friend/ru?tag=PQPCUPRQP&token=8dphjwnw" class="link-item"><div class="game-icon-box"><img src="https://github.com/JettaXP/pix/blob/main/idV76bFYdf_logos.jpeg?raw=true"></div><div class="link-content"><span class="link-title">Brawl Stars</span><span class="link-subtitle">JettaXGG</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
@@ -231,11 +213,7 @@
     <audio id="audio" src="https://raw.githubusercontent.com/JettaXP/pix/main/The%20Connells%20-%20%2074-%2075.mp3"></audio>
 
     <script>
-        // --- ЛОГИКА ОКНА ПРИВЕТСТВИЯ ---
-        window.onload = () => {
-            document.getElementById('welcome-overlay').classList.add('visible');
-        };
-
+        window.onload = () => { document.getElementById('welcome-overlay').classList.add('visible'); };
         function closeWelcome() {
             document.getElementById('welcome-overlay').style.opacity = '0';
             setTimeout(() => {
@@ -243,28 +221,17 @@
                 document.getElementById('main-content').classList.add('show');
             }, 800);
         }
-
-        // --- ЛОГИКА ОКНА УСТРОЙСТВ ---
-        function showDevices() {
-            document.getElementById('devices-overlay').classList.add('visible');
-        }
-
+        function showDevices() { document.getElementById('devices-overlay').classList.add('visible'); }
         function closeDevices(event) {
             if (event.target === document.getElementById('devices-overlay')) {
                 document.getElementById('devices-overlay').classList.remove('visible');
             }
         }
-
-        // --- ЧАСЫ (UTC +2) ---
         function updateClock(){const n=new Date();const u=n.getTime()+(n.getTimezoneOffset()*60000);const t=new Date(u+(3600000*2));document.getElementById('myClock').textContent=t.toLocaleTimeString('ru-RU');}
         setInterval(updateClock,1000);updateClock();
-
-        // --- ПЛЕЕР ---
         const a=document.getElementById('audio'),b=document.getElementById('playBtn'),w=document.getElementById('wave');let p=false,amp=0;
         b.onclick=()=>{if(p){p=false;document.getElementById('playIcon').innerHTML='<path d="M8 5v14l11-7z"/>';a.pause();}else{p=true;a.play();document.getElementById('playIcon').innerHTML='<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';draw();}};
         function draw(){if(!p&&amp<=0.1){w.setAttribute('d','M 0 20 L 150 20');return;}amp=p?Math.min(amp+0.5,10):Math.max(amp-0.4,0);let d="M 0 20 ";for(let i=0;i<=20;i++){d+=`L ${i*7.5} ${20+Math.sin(Date.now()/200+i*0.8)*amp} `;}w.setAttribute('d',d);requestAnimationFrame(draw);}
-
-        // --- ПАРАЛЛАКС ---
         window.onscroll=()=>{const y=window.pageYOffset;document.querySelectorAll('.shape').forEach(s=>{const sp=s.dataset.speed;s.style.transform=`translateY(${-y*sp}px) ${s.style.transform.includes('rotate')?s.style.transform.split(' ').pop():''}`;});};
     </script>
 </body>
