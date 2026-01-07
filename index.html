@@ -1,581 +1,166 @@
-sudo tee /var/www/html/index.html > /dev/null <<'EOF'
-
-
-
 <!DOCTYPE html>
-
-
-
 <html lang="ru">
-
-
-
 <head>
-
-
-
     <meta charset="UTF-8">
-
-
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-
     <title>JettaX | Info</title>
-
-
-
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
-
-
-
     <style>
-
-
-
         body { margin: 0; background: #0f0f12; color: white; font-family: 'Comfortaa', cursive; min-height: 250vh; overflow-x: hidden; }
-
-
-
         
-
-
-
-        /* --- ПРИВЕТСТВЕННОЕ ОКНО (WELCOME OVERLAY) --- */
-
-
-
         #welcome-overlay {
-
-
-
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-
-
-
             background: rgba(15, 15, 18, 0.95);
-
-
-
             backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-
-
-
             z-index: 100; display: flex; align-items: center; justify-content: center;
-
-
-
             opacity: 0; transition: opacity 0.8s ease, visibility 0.8s;
-
-
-
             cursor: pointer; visibility: hidden;
-
-
-
         }
-
-
-
         #welcome-overlay.visible { opacity: 1; visibility: visible; }
 
-
-
-
-
-
-
         .welcome-card {
-
-
-
             max-width: 400px; padding: 40px 30px; text-align: center;
-
-
-
             background: rgba(187, 134, 252, 0.05);
-
-
-
             border-radius: 32px; border: 1px solid rgba(187, 134, 252, 0.2);
-
-
-
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-
-
-
         }
-
-
-
         .welcome-card h2 { font-size: 2rem; color: #bb86fc; margin-bottom: 15px; }
-
-
-
         .welcome-card p { font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin-bottom: 20px; }
-
-
-
         .figma-tag {
-
-
-
             display: inline-flex; align-items: center; gap: 8px;
-
-
-
             background: rgba(255, 255, 255, 0.1); padding: 8px 16px;
-
-
-
             border-radius: 12px; font-size: 0.85rem; color: #ffb4a2;
-
-
-
         }
-
-
-
         .tap-hint {
-
-
-
             margin-top: 30px; font-size: 0.75rem; color: rgba(187, 134, 252, 0.5);
-
-
-
             text-transform: uppercase; letter-spacing: 2px;
-
-
-
             animation: pulse 2s infinite;
-
-
-
         }
-
-
-
         @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-
-
-
-
-
-
-        /* --- ОСНОВНОЙ КОНТЕНТ --- */
-
-
-
         .content { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; pointer-events: none; opacity: 0; transition: 1s ease; }
-
-
-
         .content.show { opacity: 1; }
 
-
-
-
-
-
-
         .profile-wrapper, .md3-surface, .time-widget-container { pointer-events: auto; }
-
-
-
         .profile-wrapper { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
-
-
-
         .profile-container { width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(187, 134, 252, 0.4); margin-bottom: 10px; }
-
-
-
         .profile-container img { width: 100%; height: 100%; object-fit: cover; }
-
-
-
         h1 { font-size: 1.8rem; margin: 0; }
-
-
-
         .md3-surface { width: 320px; background: rgba(30, 30, 35, 0.7); backdrop-filter: blur(20px); border-radius: 28px; border: 1px solid rgba(255,255,255,0.1); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-
-
-
         .time-widget-container { position: fixed; top: 20px; right: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; z-index: 20; }
-
-
-
         .glass-pill { background: rgba(30,30,35,0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); text-align: center; }
-
-
-
         .timezone-badge { padding: 6px 14px; border-radius: 16px; font-size: 0.75rem; color: #bb86fc; background: rgba(187,134,252,0.1); }
-
-
-
         .clock-box { padding: 10px 20px; border-radius: 20px; font-size: 1.2rem; font-weight: bold; }
-
-
-
         .player-section { background: rgba(187,134,252,0.15); padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-
-
-
         .player-top { display: flex; align-items: center; gap: 15px; }
-
-
-
         .play-btn { width: 44px; height: 44px; border-radius: 50%; background: #bb86fc; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-
-
-
         .wave-path { fill: none; stroke: #ffb4a2; stroke-width: 4; stroke-linecap: round; }
-
-
-
         .time-info { display: flex; justify-content: space-between; font-size: 0.7rem; margin-top: 8px; color: rgba(255,255,255,0.5); }
-
-
-
         .links-section { display: flex; flex-direction: column; max-height: 45vh; overflow-y: auto; }
-
-
-
         .link-item { display: flex; align-items: center; padding: 14px 18px; text-decoration: none; color: white; border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s; }
-
-
-
         .link-item:hover { background: rgba(255,255,255,0.08); }
-
-
-
         .icon-box, .game-icon-box { width: 38px; height: 38px; margin-right: 12px; border-radius: 50%; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-
-
-
         .icon-box { background: rgba(255,255,255,0.08); padding: 7px; box-sizing: border-box; }
-
-
-
         .icon-box img { width: 100%; height: 100%; object-fit: contain; }
-
-
-
         .game-icon-box img { width: 100%; height: 100%; object-fit: cover; }
-
-
-
         .link-content { display: flex; flex-direction: column; flex-grow: 1; }
-
-
-
         .link-title { font-size: 0.9rem; font-weight: bold; }
-
-
-
         .link-subtitle { font-size: 0.7rem; color: rgba(255,255,255,0.5); }
-
-
-
         .arrow { opacity: 0.4; margin-left: 8px; }
-
-
-
         .shape { position: absolute; background: rgba(187, 134, 252, 0.08); z-index: 1; transition: transform 0.1s ease-out; }
-
-
-
     </style>
-
-
-
 </head>
-
-
-
 <body>
 
-
-
-
-
-
-
     <div id="welcome-overlay" onclick="closeWelcome()">
-
-
-
         <div class="welcome-card">
-
-
-
             <h2>Привет! Я JettaX</h2>
-
-
-
             <p>Меня зовут Филипп. Я из Украины, живу в прекрасном городе Днепр.</p>
-
-
-
             <div class="figma-tag">
-
-
-
                 <svg width="14" height="21" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38H19V28.5Z" fill="#1ABCFE"/><path d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 0 47.5Z" fill="#0ACF83"/><path d="M19 0H28.5C33.7467 0 38 4.2533 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z" fill="#FF7262"/><path d="M0 9.5C0 4.2533 4.2533 0 9.5 0H19V19H9.5C4.2533 19 0 14.7467 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5C0 23.2533 4.2533 19 9.5 19H19V38H9.5C4.2533 38 0 33.7467 0 28.5Z" fill="#A259FF"/></svg>
-
-
-
-                Изучаю Figma и творю всякое (я новичок)
-
-
-
+                Изучаю Figma и творю всякое
             </div>
-
-
-
             <div class="tap-hint">Нажми на экран, чтобы войти</div>
-
-
-
         </div>
-
-
-
     </div>
-
-
-
-
-
-
 
     <div class="time-widget-container"><div class="glass-pill timezone-badge">UTC +2</div><div class="glass-pill clock-box" id="myClock">00:00:00</div></div>
-
-
-
+    
     <div class="content" id="main-content">
-
-
-
-        <div class="profile-wrapper"><div class="profile-container"><img src="avatar.svg"></div><h1>JettaX</h1></div>
-
-
-
-        <div class="md3-surface">
-
-
-
-            <div class="player-section"><div class="player-top"><button class="play-btn" id="playBtn"><svg id="playIcon" viewBox="0 0 24 24" width="20"><path d="M8 5v14l11-7z"/></svg></button>
-
-
-
-            <div style="flex-grow:1;height:30px;"><svg width="100%" height="100%" viewBox="0 0 150 40" preserveAspectRatio="none"><path class="wave-path" id="wave" d="M 0 20 L 150 20" /></svg></div></div>
-
-
-
-            <div class="time-info"><span id="curr">0:00</span><span id="dur">0:00</span></div></div>
-
-
-
-            <div class="links-section">
-
-
-
-                <a href="https://t.me/jettaxp" class="link-item"><div class="icon-box"><img src="https://camo.githubusercontent.com/3e727a8e2e5eb5eba15130a4e9abd6dd1e433816d7973b3324a7b81f9630a1e2/68747470733a2f2f692e696d6775722e636f6d2f35456d786576502e706e67"></div><div class="link-content"><span class="link-title">Telegram</span><span class="link-subtitle">@jettaxp</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
-
-
-
-                <a href="https://www.tiktok.com/@jettax03" class="link-item"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/9f0a36013bb2d0dc2a27e18c6e8b377dee25dfbf/tiktok-simplified-black-icon.svg"></div><div class="link-content"><span class="link-title">TikTok</span><span class="link-subtitle">@jettax03</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
-
-
-
-                <a href="https://steamcommunity.com/id/jettaxp" class="link-item"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/b5c3ad2418eabf11fbd71577b5a1252700e05b6a/Symbol.svg"></div><div class="link-content"><span class="link-title">Steam</span><span class="link-subtitle">jettaxp</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
-
-
-
-                <div class="link-item" style="cursor:default"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/b5c3ad2418eabf11fbd71577b5a1252700e05b6a/discord-square-color-icon.svg"></div><div class="link-content"><span class="link-title">Discord</span><span class="link-subtitle">jettax03</span></div></div>
-
-
-
-                <div class="link-item" style="cursor:default"><div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg"></div><div class="link-content"><span class="link-title">Epic Games</span><span class="link-subtitle">JettaXP</span></div></div>
-
-
-
-                <a href="https://link.clashroyale.com/invite/friend/ru/?tag=QCVVRCQ99&token=4a37sybn" class="link-item"><div class="game-icon-box"><img src="https://github.com/JettaXP/pix/blob/main/idGWN7GzkZ_1767732695435.jpeg?raw=true"></div><div class="link-content"><span class="link-title">Clash Royale</span><span class="link-subtitle">JettaXGG</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
-
-
-
-                <a href="https://link.brawlstars.com/invite/friend/ru?tag=PQPCUPRQP&token=8dphjwnw" class="link-item"><div class="game-icon-box"><img src="https://github.com/JettaXP/pix/blob/main/idV76bFYdf_logos.jpeg?raw=true"></div><div class="link-content"><span class="link-title">Brawl Stars</span><span class="link-subtitle">JettaXGG</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
-
-
-
+        <div class="profile-wrapper">
+            <div class="profile-container">
+                <img src="avatar.svg" alt="Avatar">
             </div>
-
-
-
+            <h1>JettaX</h1>
         </div>
-
-
-
+        
+        <div class="md3-surface">
+            <div class="player-section">
+                <div class="player-top">
+                    <button class="play-btn" id="playBtn">
+                        <svg id="playIcon" viewBox="0 0 24 24" width="20"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <div style="flex-grow:1;height:30px;">
+                        <svg width="100%" height="100%" viewBox="0 0 150 40" preserveAspectRatio="none">
+                            <path class="wave-path" id="wave" d="M 0 20 L 150 20" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="time-info"><span id="curr">0:00</span><span id="dur">0:00</span></div>
+            </div>
+            
+            <div class="links-section">
+                <a href="https://t.me/jettaxp" class="link-item"><div class="icon-box"><img src="https://camo.githubusercontent.com/3e727a8e2e5eb5eba15130a4e9abd6dd1e433816d7973b3324a7b81f9630a1e2/68747470733a2f2f692e696d6775722e636f6d2f35456d786576502e706e67"></div><div class="link-content"><span class="link-title">Telegram</span><span class="link-subtitle">@jettaxp</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+                
+                <a href="https://www.tiktok.com/@jettax03" class="link-item"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/9f0a36013bb2d0dc2a27e18c6e8b377dee25dfbf/tiktok-simplified-black-icon.svg"></div><div class="link-content"><span class="link-title">TikTok</span><span class="link-subtitle">@jettax03</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+                
+                <a href="https://steamcommunity.com/id/jettaxp" class="link-item"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/b5c3ad2418eabf11fbd71577b5a1252700e05b6a/Symbol.svg"></div><div class="link-content"><span class="link-title">Steam</span><span class="link-subtitle">jettaxp</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+                
+                <div class="link-item" style="cursor:default"><div class="icon-box"><img src="https://raw.githubusercontent.com/JettaXP/pix/b5c3ad2418eabf11fbd71577b5a1252700e05b6a/discord-square-color-icon.svg"></div><div class="link-content"><span class="link-title">Discord</span><span class="link-subtitle">jettax03</span></div></div>
+                
+                <div class="link-item" style="cursor:default"><div class="icon-box"><img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg"></div><div class="link-content"><span class="link-title">Epic Games</span><span class="link-subtitle">JettaXP</span></div></div>
+                
+                <a href="https://link.clashroyale.com/invite/friend/ru/?tag=QCVVRCQ99&token=4a37sybn" class="link-item"><div class="game-icon-box"><img src="https://github.com/JettaXP/pix/blob/main/idGWN7GzkZ_1767732695435.jpeg?raw=true"></div><div class="link-content"><span class="link-title">Clash Royale</span><span class="link-subtitle">JettaXGG</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+                
+                <a href="https://link.brawlstars.com/invite/friend/ru?tag=PQPCUPRQP&token=8dphjwnw" class="link-item"><div class="game-icon-box"><img src="https://github.com/JettaXP/pix/blob/main/idV76bFYdf_logos.jpeg?raw=true"></div><div class="link-content"><span class="link-title">Brawl Stars</span><span class="link-subtitle">JettaXGG</span></div><svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+            </div>
+        </div>
     </div>
-
-
-
-
-
-
 
     <div class="parallax-bg" id="bg-shapes">
-
-
-
         <div class="shape" data-speed="0.2" style="width:220px;height:100px;top:15%;left:-50px;border-radius:100px;transform:rotate(-15deg);"></div>
-
-
-
         <div class="shape" data-speed="0.6" style="width:120px;height:120px;top:60%;left:80%;border-radius:50%;"></div>
-
-
-
         <div class="shape" data-speed="0.4" style="width:150px;height:150px;top:40%;left:75%;border-radius:30%;transform:rotate(20deg);"></div>
-
-
-
         <div class="shape" data-speed="0.8" style="width:180px;height:160px;top:85%;left:10%;border-radius:40% 60% 70% 30% / 40% 50% 60% 50%;"></div>
-
-
-
     </div>
-
-
-
-
-
-
 
     <audio id="audio" src="https://raw.githubusercontent.com/JettaXP/pix/main/The%20Connells%20-%20%2074-%2075.mp3"></audio>
 
-
-
-
-
-
-
     <script>
-
-
-
-        // --- ЛОГИКА ОКНА ПРИВЕТСТВИЯ ---
-
-
-
-        window.onload = () => {
-
-
-
-            document.getElementById('welcome-overlay').classList.add('visible');
-
-
-
-        };
-
-
-
-
-
-
-
+        // Приветствие
+        window.onload = () => { document.getElementById('welcome-overlay').classList.add('visible'); };
         function closeWelcome() {
-
-
-
             document.getElementById('welcome-overlay').style.opacity = '0';
-
-
-
             setTimeout(() => {
-
-
-
                 document.getElementById('welcome-overlay').style.display = 'none';
-
-
-
                 document.getElementById('main-content').classList.add('show');
-
-
-
             }, 800);
-
-
-
         }
 
-
-
-
-
-
-
-        // --- ЧАСЫ (UTC +2) ---
-
-
-
+        // Часы
         function updateClock(){const n=new Date();const u=n.getTime()+(n.getTimezoneOffset()*60000);const t=new Date(u+(3600000*2));document.getElementById('myClock').textContent=t.toLocaleTimeString('ru-RU');}
-
-
-
         setInterval(updateClock,1000);updateClock();
 
-
-
-
-
-
-
-        // --- ПЛЕЕР ---
-
-
-
+        // Плеер
         const a=document.getElementById('audio'),b=document.getElementById('playBtn'),w=document.getElementById('wave');let p=false,amp=0;
-
-
-
         b.onclick=()=>{if(p){p=false;document.getElementById('playIcon').innerHTML='<path d="M8 5v14l11-7z"/>';a.pause();}else{p=true;a.play();document.getElementById('playIcon').innerHTML='<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';draw();}};
-
-
-
         function draw(){if(!p&&amp<=0.1){w.setAttribute('d','M 0 20 L 150 20');return;}amp=p?Math.min(amp+0.5,10):Math.max(amp-0.4,0);let d="M 0 20 ";for(let i=0;i<=20;i++){d+=`L ${i*7.5} ${20+Math.sin(Date.now()/200+i*0.8)*amp} `;}w.setAttribute('d',d);requestAnimationFrame(draw);}
 
-
-
-
-
-
-
-        // --- ПАРАЛЛАКС ---
-
-
-
+        // Параллакс
         window.onscroll=()=>{const y=window.pageYOffset;document.querySelectorAll('.shape').forEach(s=>{const sp=s.dataset.speed;s.style.transform=`translateY(${-y*sp}px) ${s.style.transform.includes('rotate')?s.style.transform.split(' ').pop():''}`;});};
-
-
-
     </script>
-
-
-
 </body>
-
-
-
 </html>
-
-
-
-EOF
