@@ -1,13 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JettaX | Info</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/JettaXP/pix/main/Untitled.svg">
-    
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JettaX | Info</title>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://raw.githubusercontent.com/JettaXP/pix/main/Untitled.svg" rel="icon" type="image/svg+xml"/>
+<style>
         :root {
             /* Темная тема (по умолчанию) */
             --bg-primary: #0f0f12;
@@ -265,11 +265,12 @@
 
         /* === ОСНОВНОЙ КОНТЕНТ === */
         .content { 
-            position: fixed; 
+            position: relative; 
             top: 0; 
             left: 0; 
             width: 100%; 
-            height: 100vh; 
+            min-height: 100vh;
+            height: auto; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -280,7 +281,9 @@
             transition: opacity 1s ease; 
             padding: 20px;
         }
-        .content.show { opacity: 1; }
+        .content.show { opacity: 1; 
+            pointer-events: auto;
+}
 
         .profile-wrapper, .md3-surface, .time-widget-container { 
             pointer-events: auto; 
@@ -499,10 +502,12 @@
         }
         
         .shape { 
-            position: absolute; 
+            position: fixed; 
             background: rgba(187, 134, 252, 0.08); 
             z-index: 1; 
-            transition: transform 0.1s ease-out; 
+            will-change: transform;
+            transition: none;
+            pointer-events: none; 
         }
 
         /* === АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ === */
@@ -656,8 +661,12 @@
 
         @media (min-width: 1200px) {
             .md3-surface {
-                max-width: 400px;
-            }
+    max-width: 400px;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.25),
+        0 12px 32px rgba(0,0,0,0.3);
+}
+
             
             .profile-container {
                 width: 140px;
@@ -668,217 +677,432 @@
                 font-size: 2.2rem;
             }
         }
+    
+
+        /* === toast + m3 slider + copy v3 + player icon === */
+        .m3-topbar{display:none !important;}
+        .time-widget-container{ z-index: 60; }
+
+        .m3-toast{
+            position: fixed;
+            top: 12px;
+            left: 50%;
+            transform: translate(-50%, -18px);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 70;
+            padding: 10px 14px;
+            border-radius: 16px;
+            background: rgba(30, 30, 35, 0.78);
+            border: 1px solid rgba(187, 134, 252, 0.25);
+            color: var(--text-primary);
+            backdrop-filter: blur(12px);
+            transition: opacity 180ms ease, transform 180ms ease;
+            max-width: min(92vw, 520px);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        body[data-theme="light"] .m3-toast{
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0,0,0,.12);
+        }
+        .m3-toast.show{
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .m3-slider-wrap{ margin-top: 10px; }
+        .m3-slider{ width: 100%; height: 4px; accent-color: var(--accent-primary); }
+
+        /* copy buttons: fixed size, aligned right */
+        .link-item{ align-items: center; }
+        .link-content{ flex: 1 1 auto; min-width: 0; }
+        .copy-btn{
+            margin-left: auto;
+            width: 36px;
+            height: 36px;
+            flex: 0 0 36px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.18);
+            background: rgba(255,255,255,.06);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            pointer-events: auto;
+            transform: translateZ(0);
+            transition: transform 120ms ease, background-color 180ms ease, border-color 180ms ease;
+        }
+        body[data-theme="light"] .copy-btn{
+            border: 1px solid rgba(0,0,0,.15);
+            background: rgba(0,0,0,.04);
+        }
+        .copy-btn:hover{ transform: translateY(-1px); }
+        .copy-btn:active{ transform: translateY(0px) scale(0.98); }
+        .copy-btn::after{
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: color-mix(in srgb, var(--accent-primary) 25%, transparent);
+            opacity: 0;
+            transform: scale(0.2);
+        }
+        .copy-btn:active::after{
+            animation: m3Ripple 420ms ease-out;
+        }
+        .copy-btn.copied{
+            animation: m3Pop 220ms ease;
+        }
+        .copy-btn svg{ width: 18px; height: 18px; fill: currentColor; opacity: 0.9; }
+
+        @keyframes m3Ripple{
+            from{ opacity: .35; transform: scale(.2); }
+            to{ opacity: 0; transform: scale(1.2); }
+        }
+        @keyframes m3Pop{
+            0%{ transform: scale(1); }
+            50%{ transform: scale(1.12); }
+            100%{ transform: scale(1); }
+        }
+
+        /* smooth play icon */
+        #playIcon{
+            transition: opacity 160ms ease, transform 160ms ease;
+            will-change: opacity, transform;
+        }
+
+
+        /* === tabs + bottom nav (bootfix) === */
+        body{ padding-bottom: 92px; }
+
+        .m3-bottom-nav{
+            position: fixed;
+            left: 50%;
+            bottom: 14px;
+            transform: translateX(-50%);
+            width: min(520px, calc(100vw - 24px));
+            height: 64px;
+            border-radius: 28px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: center;
+            gap: 4px;
+            padding: 6px;
+            background: rgba(30, 30, 35, 0.78);
+            border: 1px solid rgba(187, 134, 252, 0.18);
+            backdrop-filter: blur(14px);
+            z-index: 90;
+        }
+        body[data-theme="light"] .m3-bottom-nav{
+            background: rgba(255,255,255,.82);
+            border: 1px solid rgba(0,0,0,.12);
+        }
+
+        .m3-nav-item{
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: var(--text-primary);
+            height: 52px;
+            border-radius: 22px;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            position: relative;
+            gap: 2px;
+            padding: 6px 6px;
+            transition: transform 140ms ease;
+        }
+        .m3-nav-item:active{ transform: scale(0.98); }
+        .m3-nav-item::before{
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border-radius: 18px;
+            background: transparent;
+            transition: background-color 180ms ease;
+        }
+        .m3-nav-item.active::before{
+            background: color-mix(in srgb, var(--accent-primary) 26%, transparent);
+        }
+
+        .m3-nav-icon{ position: relative; z-index: 1; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; }
+        .m3-nav-icon svg{ width: 22px; height: 22px; fill: currentColor; opacity: 0.92; }
+        .m3-nav-img{ width: 22px; height: 22px; display:block; border-radius: 6px; }
+        .m3-nav-label{ position: relative; z-index: 1; font-size: 0.72rem; letter-spacing: 0.2px; opacity: 0.9; }
+
+        .tab-stage{ position: relative; width: 100%; transition: height 240ms ease; }
+        .tab-panel{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translate3d(18px, 0, 0) scale(0.99);
+            transition: opacity 220ms ease, transform 220ms ease;
+            pointer-events: none;
+        }
+        .tab-panel.active{ opacity: 1; transform: translate3d(0,0,0) scale(1); pointer-events: auto; }
+        .tab-panel.from-right{ opacity: 0; transform: translate3d(22px,0,0) scale(0.99); }
+        .tab-panel.from-left{ opacity: 0; transform: translate3d(-22px,0,0) scale(0.99); }
+        .tab-panel.to-left{ opacity: 0; transform: translate3d(-22px,0,0) scale(0.99); }
+        .tab-panel.to-right{ opacity: 0; transform: translate3d(22px,0,0) scale(0.99); }
+
+        .m3-main-hint{
+            margin: 0 0 12px;
+            padding: 12px 14px;
+            border-radius: 18px;
+            background: color-mix(in srgb, var(--bg-secondary) 88%, transparent);
+            border: 1px solid color-mix(in srgb, var(--accent-primary) 16%, transparent);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.25;
+            box-sizing: border-box;
+        }
+
+        #tab-info .md3-surface{ padding: 14px 16px !important; overflow: visible; }
+        .m3-info-title{ margin: 0 0 8px; font-weight: 700; opacity: 0.95; }
+
+        /* pets + birthday */
+        .m3-pets-block{
+            margin-top: 12px;
+            padding: 14px 16px;
+            border-radius: 18px;
+            background: color-mix(in srgb, var(--bg-secondary) 88%, transparent);
+            border: 1px solid color-mix(in srgb, var(--accent-primary) 14%, transparent);
+        }
+        .m3-pets-list{ display: grid; gap: 10px; margin-top: 10px; }
+        .m3-pet-row{ display:flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+        .m3-pet-name{ font-weight: 700; color: var(--text-primary); }
+        .m3-pet-meta{ color: var(--text-secondary); font-size: 0.95rem; }
+        .m3-bday-card{
+            margin-top: 12px;
+            padding: 14px 16px;
+            border-radius: 18px;
+            background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+            border: 1px solid color-mix(in srgb, var(--accent-primary) 22%, transparent);
+        }
+        .m3-bday-text{ font-size: 1.05rem; color: var(--text-primary); opacity: .95; }
+
+        /* no copy buttons outside links */
+        body[data-tab="main"] .copy-btn,
+        body[data-tab="devices"] .copy-btn,
+        body[data-tab="info"] .copy-btn{ display:none !important; pointer-events:none !important; }
+
+        .devices-close-hint{ display:none !important; }
+
+        /* theme change smooth fallback */
+        body, .md3-surface, .link-item, .devices-card, .device-item, .m3-bottom-nav, .m3-theme-corner{
+            transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease;
+        }
     </style>
 </head>
 <body>
+<div aria-label="theme switch" class="m3-theme-corner">
+<span class="m3-theme-label">тема</span>
+<label aria-label="тема" class="m3-switch" title="тема">
+<input id="themeToggle" type="checkbox"/>
+<span class="m3-switch__track"></span>
+<span class="m3-switch__thumb"></span>
+</label>
+</div>
 
-    <div id="welcome-overlay" onclick="closeWelcome(event)">
-        <div class="welcome-card" onclick="event.stopPropagation()">
-            <h2>Привет! Я JettaX</h2>
-            <p>Меня зовут Филипп. Я из Украины, живу в прекрасном городе Днепр.</p>
-            
-            <div class="theme-selector">
-                <button class="theme-option active" data-theme="dark" onclick="selectTheme('dark')">
+<div aria-live="polite" class="m3-toast" id="m3Toast" role="status"></div>
+<div id="welcome-overlay" onclick="closeWelcome(event)">
+<div class="welcome-card" onclick="event.stopPropagation()">
+<h2>Привет! Я JettaX</h2>
+<p>Меня зовут Филипп. Я из Украины, живу в прекрасном городе Днепр.</p>
+<div class="theme-selector">
+<button class="theme-option active" data-theme="dark" onclick="selectTheme('dark')">
                     🌙 Темная
                 </button>
-                <button class="theme-option" data-theme="light" onclick="selectTheme('light')">
+<button class="theme-option" data-theme="light" onclick="selectTheme('light')">
                     ☀️ Светлая
                 </button>
-            </div>
-            
-            <div class="figma-tag">
-                <svg width="14" height="21" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38H19V28.5Z" fill="#1ABCFE"/>
-                    <path d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
-                    <path d="M19 0H28.5C33.7467 0 38 4.2533 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z" fill="#FF7262"/>
-                    <path d="M0 9.5C0 4.2533 4.2533 0 9.5 0H19V19H9.5C4.2533 19 0 14.7467 0 9.5Z" fill="#F24E1E"/>
-                    <path d="M0 28.5C0 23.2533 4.2533 19 9.5 19H19V38H9.5C4.2533 38 0 33.7467 0 28.5Z" fill="#A259FF"/>
-                </svg>
+</div>
+<div class="figma-tag">
+<svg fill="none" height="21" viewbox="0 0 38 57" width="14" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38H19V28.5Z" fill="#1ABCFE"></path>
+<path d="M0 47.5C0 42.2533 4.2533 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.2533 57 0 52.7467 0 47.5Z" fill="#0ACF83"></path>
+<path d="M19 0H28.5C33.7467 0 38 4.2533 38 9.5C38 14.7467 33.7467 19 28.5 19H19V0Z" fill="#FF7262"></path>
+<path d="M0 9.5C0 4.2533 4.2533 0 9.5 0H19V19H9.5C4.2533 19 0 14.7467 0 9.5Z" fill="#F24E1E"></path>
+<path d="M0 28.5C0 23.2533 4.2533 19 9.5 19H19V38H9.5C4.2533 38 0 33.7467 0 28.5Z" fill="#A259FF"></path>
+</svg>
                 Изучаю Figma и творю всякое (новичок)
             </div>
-            <div class="tap-hint">Нажми на экран, чтобы войти</div>
-        </div>
-    </div>
+<div class="tap-hint">Нажми на экран, чтобы войти</div>
+</div>
+</div>
+<div id="devices-overlay" onclick="closeDevices(event)">
+<div class="devices-card" onclick="event.stopPropagation()">
+<h2>Мои устройства</h2>
+<div class="device-category">
+<h3>📱 Телефоны</h3>
+<div class="device-item">
+<div class="device-name">Pixel 7a <span class="device-status status-rip">rip battery</span></div>
+<div class="device-specs">Основной телефон</div>
+</div>
+<div class="device-item">
+<div class="device-name">Huawei INE-LX1 <span class="device-status status-secondary">второй</span></div>
+<div class="device-specs">Резервный телефон</div>
+</div>
+</div>
+<div class="device-category">
+<h3>💻 ПК</h3>
+<div class="device-item">
+<div class="device-name">Windows 11</div>
+<div class="device-specs">Intel Core i3-10105F @ 3.70GHz<br/>NVIDIA GTX 950<br/>16GB DDR4</div>
+</div>
+</div>
+<div class="device-category">
+<h3>💻 Ноутбук</h3>
+<div class="device-item">
+<div class="device-name">Asus Vivobook S 15</div>
+<div class="device-specs">Рабочий ноутбук</div>
+</div>
+</div>
+<div class="device-category">
+<h3>⏰ Гаджеты</h3>
+<div class="device-item">
+<div class="device-name">Pixel Watch 1</div>
+<div class="device-specs">Часы на Wear OS</div>
+</div>
+<div class="device-item">
+<div class="device-name">Pixel Buds A-series</div>
+<div class="device-specs">Беспроводные наушники</div>
+</div>
+</div>
 
-    <div id="devices-overlay" onclick="closeDevices(event)">
-        <div class="devices-card" onclick="event.stopPropagation()">
-            <h2>Мои устройства</h2>
-            <div class="device-category">
-                <h3>📱 Телефоны</h3>
-                <div class="device-item">
-                    <div class="device-name">Pixel 7a <span class="device-status status-rip">rip battery</span></div>
-                    <div class="device-specs">Основной телефон</div>
-                </div>
-                <div class="device-item">
-                    <div class="device-name">Huawei INE-LX1 <span class="device-status status-secondary">второй</span></div>
-                    <div class="device-specs">Резервный телефон</div>
-                </div>
-            </div>
-            <div class="device-category">
-                <h3>💻 ПК</h3>
-                <div class="device-item">
-                    <div class="device-name">Windows 11</div>
-                    <div class="device-specs">Intel Core i3-10105F @ 3.70GHz<br>NVIDIA GTX 950<br>16GB DDR4</div>
-                </div>
-            </div>
-            <div class="device-category">
-                <h3>💻 Ноутбук</h3>
-                <div class="device-item">
-                    <div class="device-name">Asus Vivobook S 15</div>
-                    <div class="device-specs">Рабочий ноутбук</div>
-                </div>
-            </div>
-            <div class="device-category">
-                <h3>⏰ Гаджеты</h3>
-                <div class="device-item">
-                    <div class="device-name">Pixel Watch 1</div>
-                    <div class="device-specs">Часы на Wear OS</div>
-                </div>
-                <div class="device-item">
-                    <div class="device-name">Pixel Buds A-series</div>
-                    <div class="device-specs">Беспроводные наушники</div>
-                </div>
-            </div>
-            <div class="devices-close-hint">Нажми вне окна, чтобы закрыть</div>
-        </div>
-    </div>
+</div>
+</div>
+<div class="time-widget-container">
+<div class="glass-pill timezone-badge">UTC +2</div>
+<div class="glass-pill clock-box" id="myClock">00:00:00</div>
+</div>
+<div class="content" id="main-content">
+<div class="profile-wrapper">
+<div class="profile-container">
+<img alt="Avatar" src="https://raw.githubusercontent.com/JettaXP/pix/main/Untitled.svg"/>
+</div>
+<h1>JettaX</h1>
+</div>
+<div class="md3-surface">
+<div class="player-section">
+<div class="player-top">
+<button class="play-btn" id="playBtn">
+<svg fill="white" id="playIcon" viewbox="0 0 24 24" width="20">
+<path d="M8 5v14l11-7z"></path>
+</svg>
+</button>
+<div style="flex-grow:1;height:30px;">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 150 40" width="100%">
+<path class="wave-path" d="M 0 20 L 150 20" id="wave"></path>
+</svg>
+</div>
+</div>
+<div class="m3-slider-wrap">
+<input aria-label="music seek" class="m3-slider" id="seekSlider" max="0" min="0" step="0.01" type="range" value="0"/>
+</div>
+<div class="time-info">
+<span id="curr">0:00</span>
+<span id="dur">0:00</span>
+</div>
+</div>
+<div class="links-section">
+<a class="link-item" href="https://t.me/jettaxp">
+<div class="icon-box">
+<img src="https://camo.githubusercontent.com/3e727a8e2e5eb5eba15130a4e9abd6dd1e433816d7973b3324a7b81f9630a1e2/68747470733a2f2f692e696d6775722e636f6d2f35456d786576502e706e67"/>
+</div>
+<div class="link-content">
+<span class="link-title">Telegram</span>
+<span class="link-subtitle">@jettaxp</span>
+</div>
+<svg class="arrow" fill="white" height="12" viewbox="0 0 24 24" width="12">
+<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path>
+</svg>
+</a>
+<a class="link-item" href="https://www.tiktok.com/@jettax03">
+<div class="icon-box">
+<img src="https://raw.githubusercontent.com/JettaXP/pix/9f0a36013bb2d0dc2a27e18c6e8b377dee25dfbf/tiktok-simplified-black-icon.svg"/>
+</div>
+<div class="link-content">
+<span class="link-title">TikTok</span>
+<span class="link-subtitle">@jettax03</span>
+</div>
+<svg class="arrow" fill="white" height="12" viewbox="0 0 24 24" width="12">
+<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path>
+</svg>
+</a>
+<a class="link-item" href="https://steamcommunity.com/id/jettaxp">
+<div class="icon-box">
+<img src="https://raw.githubusercontent.com/JettaXP/pix/139df1c184f107fe5508548a0ef65174a6928b41/Symbol.svg"/>
+</div>
+<div class="link-content">
+<span class="link-title">Steam</span>
+<span class="link-subtitle">jettaxp</span>
+</div>
+<svg class="arrow" fill="white" height="12" viewbox="0 0 24 24" width="12">
+<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path>
+</svg>
+</a>
 
-    <div class="time-widget-container">
-        <div class="glass-pill timezone-badge">UTC +2</div>
-        <div class="glass-pill clock-box" id="myClock">00:00:00</div>
-    </div>
-    
-    <div class="content" id="main-content">
-        <div class="profile-wrapper">
-            <div class="profile-container">
-                <img src="https://raw.githubusercontent.com/JettaXP/pix/main/Untitled.svg" alt="Avatar">
-            </div>
-            <h1>JettaX</h1>
-        </div>
-        <div class="md3-surface">
-            <div class="player-section">
-                <div class="player-top">
-                    <button class="play-btn" id="playBtn">
-                        <svg id="playIcon" viewBox="0 0 24 24" width="20" fill="white">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </button>
-                    <div style="flex-grow:1;height:30px;">
-                        <svg width="100%" height="100%" viewBox="0 0 150 40" preserveAspectRatio="none">
-                            <path class="wave-path" id="wave" d="M 0 20 L 150 20" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="time-info">
-                    <span id="curr">0:00</span>
-                    <span id="dur">0:00</span>
-                </div>
-            </div>
-            <div class="links-section">
-                <a href="https://t.me/jettaxp" class="link-item">
-                    <div class="icon-box">
-                        <img src="https://camo.githubusercontent.com/3e727a8e2e5eb5eba15130a4e9abd6dd1e433816d7973b3324a7b81f9630a1e2/68747470733a2f2f692e696d6775722e636f6d2f35456d786576502e706e67">
-                    </div>
-                    <div class="link-content">
-                        <span class="link-title">Telegram</span>
-                        <span class="link-subtitle">@jettaxp</span>
-                    </div>
-                    <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white">
-                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
-                    </svg>
-                </a>
-                <a href="https://www.tiktok.com/@jettax03" class="link-item">
-                    <div class="icon-box">
-                        <img src="https://raw.githubusercontent.com/JettaXP/pix/9f0a36013bb2d0dc2a27e18c6e8b377dee25dfbf/tiktok-simplified-black-icon.svg">
-                    </div>
-                    <div class="link-content">
-                        <span class="link-title">TikTok</span>
-                        <span class="link-subtitle">@jettax03</span>
-                    </div>
-                    <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white">
-                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
-                    </svg>
-                </a>
-                <a href="https://steamcommunity.com/id/jettaxp" class="link-item">
-                    <div class="icon-box">
-                        <img src="https://raw.githubusercontent.com/JettaXP/pix/139df1c184f107fe5508548a0ef65174a6928b41/Symbol.svg">
-                    </div>
-                    <div class="link-content">
-                        <span class="link-title">Steam</span>
-                        <span class="link-subtitle">jettaxp</span>
-                    </div>
-                    <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white">
-                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
-                    </svg>
-                </a>
-                <div class="link-item" style="cursor:pointer" onclick="showDevices()">
-                    <div class="icon-box">
-                        <img src="https://github.com/JettaXP/pix/blob/main/free-icon-responsive-566107.png?raw=true">
-                    </div>
-                    <div class="link-content">
-                        <span class="link-title">Мои устройства</span>
-                        <span class="link-subtitle">Техника которую я использую</span>
-                    </div>
-                    <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white">
-                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
-                    </svg>
-                </div>
-                <div class="link-item" style="cursor:default">
-                    <div class="icon-box">
-                        <img src="https://raw.githubusercontent.com/JettaXP/pix/139df1c184f107fe5508548a0ef65174a6928b41/discord-square-color-icon.svg">
-                    </div>
-                    <div class="link-content">
-                        <span class="link-title">Discord</span>
-                        <span class="link-subtitle">jettax03</span>
-                    </div>
-                </div>
-                <div class="link-item" style="cursor:default">
-                    <div class="icon-box">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg">
-                    </div>
-                    <div class="link-content">
-                        <span class="link-title">Epic Games</span>
-                        <span class="link-subtitle">JettaXP</span>
-                    </div>
-                </div>
-                <a href="https://link.clashroyale.com/invite/friend/ru/?tag=QCVVRCQ99&token=4a37sybn" class="link-item">
-                    <div class="game-icon-box">
-                        <img src="https://github.com/JettaXP/pix/blob/main/idGWN7GzkZ_1767732695435.jpeg?raw=true">
-                    </div>
-                    <div class="link-content">
-                        <span class="link-title">Clash Royale</span>
-                        <span class="link-subtitle">JettaXGG</span>
-                    </div>
-                    <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white">
-                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
-                    </svg>
-                </a>
-                <a href="https://link.brawlstars.com/invite/friend/ru?tag=PQPCUPRQP&token=8dphjwnw" class="link-item">
-                    <div class="game-icon-box">
-                        <img src="https://github.com/JettaXP/pix/blob/main/idV76bFYdf_logos.jpeg?raw=true">
-                    </div>
-                    <div class="link-content">
-                        <span class="link-title">Brawl Stars</span>
-                        <span class="link-subtitle">JettaXGG</span>
-                    </div>
-                    <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="white">
-                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="parallax-bg" id="bg-shapes">
-        <div class="shape" data-speed="0.2" style="width:220px;height:100px;top:15%;left:-50px;border-radius:100px;transform:rotate(-15deg);"></div>
-        <div class="shape" data-speed="0.6" style="width:120px;height:120px;top:60%;left:80%;border-radius:50%;"></div>
-        <div class="shape" data-speed="0.4" style="width:150px;height:150px;top:40%;left:75%;border-radius:30%;transform:rotate(20deg);"></div>
-        <div class="shape" data-speed="0.8" style="width:180px;height:160px;top:85%;left:10%;border-radius:40% 60% 70% 30% / 40% 50% 60% 50%;"></div>
-    </div>
-
-    <audio id="audio" src="https://raw.githubusercontent.com/JettaXP/pix/main/The%20Connells%20-%20%2074-%2075.mp3"></audio>
-
-    <script>
+<div class="link-item" style="cursor:default">
+<div class="icon-box">
+<img src="https://raw.githubusercontent.com/JettaXP/pix/139df1c184f107fe5508548a0ef65174a6928b41/discord-square-color-icon.svg"/>
+</div>
+<div class="link-content">
+<span class="link-title">Discord</span>
+<span class="link-subtitle">jettax03</span>
+</div>
+</div>
+<div class="link-item" style="cursor:default">
+<div class="icon-box">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg"/>
+</div>
+<div class="link-content">
+<span class="link-title">Epic Games</span>
+<span class="link-subtitle">JettaXP</span>
+</div>
+</div>
+<a class="link-item" href="https://link.clashroyale.com/invite/friend/ru/?tag=QCVVRCQ99&amp;token=4a37sybn">
+<div class="game-icon-box">
+<img src="https://github.com/JettaXP/pix/blob/main/idGWN7GzkZ_1767732695435.jpeg?raw=true"/>
+</div>
+<div class="link-content">
+<span class="link-title">Clash Royale</span>
+<span class="link-subtitle">JettaXGG</span>
+</div>
+<svg class="arrow" fill="white" height="12" viewbox="0 0 24 24" width="12">
+<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path>
+</svg>
+</a>
+<a class="link-item" href="https://link.brawlstars.com/invite/friend/ru?tag=PQPCUPRQP&amp;token=8dphjwnw">
+<div class="game-icon-box">
+<img src="https://github.com/JettaXP/pix/blob/main/idV76bFYdf_logos.jpeg?raw=true"/>
+</div>
+<div class="link-content">
+<span class="link-title">Brawl Stars</span>
+<span class="link-subtitle">JettaXGG</span>
+</div>
+<svg class="arrow" fill="white" height="12" viewbox="0 0 24 24" width="12">
+<path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+<div class="parallax-bg" id="bg-shapes">
+<div class="shape" data-speed="0.2" style="width:220px;height:100px;top:15%;left:-50px;border-radius:100px;transform:rotate(-15deg);"></div>
+<div class="shape" data-speed="0.6" style="width:120px;height:120px;top:60%;left:80%;border-radius:50%;"></div>
+<div class="shape" data-speed="0.4" style="width:150px;height:150px;top:40%;left:75%;border-radius:30%;transform:rotate(20deg);"></div>
+<div class="shape" data-speed="0.8" style="width:180px;height:160px;top:85%;left:10%;border-radius:40% 60% 70% 30% / 40% 50% 60% 50%;"></div>
+</div>
+<audio id="audio" src="https://raw.githubusercontent.com/JettaXP/pix/main/The%20Connells%20-%20%2074-%2075.mp3"></audio>
+<script>
         // === УПРАВЛЕНИЕ ТЕМАМИ ===
         function selectTheme(theme) {
             document.body.setAttribute('data-theme', theme);
@@ -946,19 +1170,57 @@
         let amp = 0;
         
         b.onclick = () => {
+            const playIconEl = document.getElementById('playIcon');
+            const playPath = '<path d="M8 5v14l11-7z"/>';
+            const pausePath = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+
+            function setIcon(pathHtml) {
+                if (!playIconEl) return;
+                playIconEl.style.opacity = '0';
+                playIconEl.style.transform = 'scale(0.92)';
+                setTimeout(() => {
+                    playIconEl.innerHTML = pathHtml;
+                    playIconEl.style.opacity = '1';
+                    playIconEl.style.transform = 'scale(1)';
+                }, 120);
+            }
+
             if (p) {
                 p = false;
-                document.getElementById('playIcon').innerHTML = '<path d="M8 5v14l11-7z"/>';
                 a.pause();
+                setIcon(playPath);
             } else {
                 p = true;
                 a.play();
-                document.getElementById('playIcon').innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+                setIcon(pausePath);
                 draw();
             }
         };
         
-        function draw() {
+        
+
+        // === auto off on ended ===
+        a.addEventListener('ended', () => {
+            // выключаем плеер
+            p = false;
+            try { a.currentTime = 0; } catch (e) {}
+
+            // плавно меняем иконку на play
+            const playIconEl = document.getElementById('playIcon');
+            if (playIconEl) {
+                playIconEl.style.opacity = '0';
+                playIconEl.style.transform = 'scale(0.92)';
+                setTimeout(() => {
+                    playIconEl.innerHTML = '<path d="M8 5v14l11-7z"/>';
+                    playIconEl.style.opacity = '1';
+                    playIconEl.style.transform = 'scale(1)';
+                }, 120);
+            }
+
+            // чтобы волна плавно ушла в прямую линию
+            draw();
+        });
+function draw() {
             if (!p && amp <= 0.1) {
                 w.setAttribute('d', 'M 0 20 L 150 20');
                 return;
@@ -975,16 +1237,144 @@
             requestAnimationFrame(draw);
         }
 
-        // === ПАРАЛЛАКС ===
-        window.onscroll = () => {
-            const y = window.pageYOffset;
-            document.querySelectorAll('.shape').forEach(s => {
-                const sp = s.dataset.speed;
-                s.style.transform = `translateY(${-y * sp}px) ${s.style.transform.includes('rotate') ? s.style.transform.split(' ').pop() : ''}`;
-            });
-        };
+        
 
-        // === ДОПОЛНИТЕЛЬНЫЕ УЛУЧШЕНИЯ ДЛЯ МОБИЛЬНЫХ ===
+        // === таймер + слайдер музыки ===
+        const currEl = document.getElementById('curr');
+        const durEl = document.getElementById('dur');
+        const slider = document.getElementById('seekSlider');
+
+        function fmt(sec) {
+            if (!isFinite(sec) || sec < 0) sec = 0;
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60);
+            return m + ':' + String(s).padStart(2, '0');
+        }
+
+        function syncDuration() {
+            if (durEl) durEl.textContent = fmt(a.duration);
+            if (slider && isFinite(a.duration)) slider.max = String(a.duration);
+        }
+
+        function syncPosition() {
+            if (currEl) currEl.textContent = fmt(a.currentTime);
+            if (slider && !slider.matches(':active')) slider.value = String(a.currentTime || 0);
+        }
+
+        if (a) {
+            a.addEventListener('loadedmetadata', () => { syncDuration(); syncPosition(); });
+            a.addEventListener('durationchange', syncDuration);
+            a.addEventListener('timeupdate', syncPosition);
+            a.addEventListener('play', syncPosition);
+            a.addEventListener('pause', syncPosition);
+            a.addEventListener('ended', syncPosition);
+        }
+
+        if (slider && a) {
+            slider.addEventListener('input', () => {
+                a.currentTime = Number(slider.value);
+                syncPosition();
+            });
+        }
+// === парраллакс v2 (плавно + можно скроллить страницу) ===
+        const shapes = Array.from(document.querySelectorAll('.shape')).map(el => ({
+            el,
+            speed: parseFloat(el.dataset.speed || '0.3'),
+            base: (el.style.transform || '').trim()
+        }));
+
+        let parRaf = 0;
+        let lastY = -1;
+
+        function renderParallax() {
+            parRaf = 0;
+            const y = window.scrollY || window.pageYOffset || 0;
+            if (y === lastY) return;
+            lastY = y;
+
+            for (const s of shapes) {
+                const ty = -y * s.speed;
+                const tx = -y * s.speed * 0.06;
+                const base = s.base ? ' ' + s.base : '';
+                s.el.style.transform = `translate3d(${tx}px, ${ty}px, 0)` + base;
+            }
+        }
+
+        function onScrollParallax() {
+            if (!parRaf) parRaf = requestAnimationFrame(renderParallax);
+        }
+
+        window.addEventListener('scroll', onScrollParallax, { passive: true });
+        renderParallax();
+
+        // === copy v3 (toast, only links) ===
+        (function () {
+            const toast = document.getElementById('m3Toast');
+            let toastT = 0;
+
+            function showToast(msg) {
+                if (!toast) return;
+                toast.textContent = msg;
+                toast.classList.add('show');
+                clearTimeout(toastT);
+                toastT = setTimeout(() => toast.classList.remove('show'), 1400);
+            }
+
+            async function copyText(t) {
+                if (!t) return false;
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(t);
+                        return true;
+                    }
+                } catch (e) {}
+
+                try {
+                    const ta = document.createElement('textarea');
+                    ta.value = t;
+                    document.body.appendChild(ta);
+                    ta.select();
+                    const ok = document.execCommand('copy');
+                    ta.remove();
+                    return ok;
+                } catch (e) {
+                    return false;
+                }
+            }
+
+            const iconSvg = `
+<svg viewBox="0 0 24 24" aria-hidden="true">
+  <path d="M16 1H6c-1.1 0-2 .9-2 2v12h2V3h10V1zm3 4H10c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16h-9V7h9v14z"/>
+</svg>`;
+
+            // только в блоке ссылок (не "мои устройства")
+            document.querySelectorAll('.links-section .link-item').forEach(link => {
+                const sub = link.querySelector('.link-subtitle');
+                if (!sub) return;
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'copy-btn';
+                btn.setAttribute('aria-label', 'copy');
+                btn.innerHTML = iconSvg;
+
+                btn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const ok = await copyText(sub.textContent.trim());
+                    btn.classList.remove('copied');
+                    void btn.offsetWidth;
+                    btn.classList.add('copied');
+
+                    showToast(ok ? 'текст скопирован' : 'не удалось скопировать');
+                });
+
+                link.appendChild(btn);
+            });
+        })();
+
+// === ДОПОЛНИТЕЛЬНЫЕ УЛУЧШЕНИЯ ДЛЯ МОБИЛЬНЫХ ===
         // Предотвращение масштабирования при двойном клике
         let lastTouchEnd = 0;
         document.addEventListener('touchend', function (event) {
@@ -1001,5 +1391,250 @@
             document.body.style.transform = 'translateZ(0)';
         }
     </script>
+
+<nav aria-label="main navigation" class="m3-bottom-nav">
+<button aria-label="main" class="m3-nav-item" data-tab="main" type="button">
+<span aria-hidden="true" class="m3-nav-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 3l9 8h-3v10h-5v-6H11v6H6V11H3l9-8z"></path></svg></span>
+<span class="m3-nav-label">main</span>
+</button>
+<button aria-label="links" class="m3-nav-item" data-tab="links" type="button">
+<span aria-hidden="true" class="m3-nav-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3.9 12a5 5 0 015-5h3v2h-3a3 3 0 100 6h3v2h-3a5 5 0 01-5-5zm7.1 1h2v-2h-2v2zm4-6h3a5 5 0 010 10h-3v-2h3a3 3 0 100-6h-3V7z"></path></svg></span>
+<span class="m3-nav-label">links</span>
+</button>
+<button aria-label="devices" class="m3-nav-item" data-tab="devices" type="button">
+<span aria-hidden="true" class="m3-nav-icon"><img alt="" class="m3-nav-img" src="https://github.com/JettaXP/pix/blob/main/free-icon-responsive-566107.png?raw=true"/></span>
+<span class="m3-nav-label">devices</span>
+</button>
+<button aria-label="info" class="m3-nav-item" data-tab="info" type="button">
+<span aria-hidden="true" class="m3-nav-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M11 17h2v-6h-2v6zm0-8h2V7h-2v2zm1-7C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16z"></path></svg></span>
+<span class="m3-nav-label">info</span>
+</button>
+</nav>
+
+<script>
+// === tabs smooth (bootfix) ===
+(function(){
+  try {
+    const body = document.body;
+    const content = document.getElementById('main-content');
+    const surface = content ? content.querySelector('.md3-surface') : null;
+    if (!content || !surface) return;
+
+    const player = surface.querySelector('.player-section');
+    const links = surface.querySelector('.links-section');
+    if (!player || !links) return; // if layout changed, keep original page visible
+
+    const stage = document.createElement('div');
+    stage.className = 'tab-stage';
+
+    const tabMain = document.createElement('div');
+    tabMain.id = 'tab-main';
+    tabMain.className = 'tab-panel';
+
+    const hint = document.createElement('div');
+    hint.className = 'm3-main-hint';
+    hint.textContent = 'это моё био. тут есть мои линки и другая инфа.';
+    tabMain.appendChild(hint);
+    tabMain.appendChild(player);
+
+    const tabLinks = document.createElement('div');
+    tabLinks.id = 'tab-links';
+    tabLinks.className = 'tab-panel';
+    tabLinks.appendChild(links);
+
+    const tabDevices = document.createElement('div');
+    tabDevices.id = 'tab-devices';
+    tabDevices.className = 'tab-panel';
+
+    const devicesWrap = document.createElement('div');
+    devicesWrap.className = 'devices-card';
+    devicesWrap.innerHTML = "\n<h2>\u041c\u043e\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430</h2>\n<div class=\"device-category\">\n<h3>\ud83d\udcf1 \u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Pixel 7a <span class=\"device-status status-rip\">rip battery</span></div>\n<div class=\"device-specs\">\u041e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u0442\u0435\u043b\u0435\u0444\u043e\u043d</div>\n</div>\n<div class=\"device-item\">\n<div class=\"device-name\">Huawei INE-LX1 <span class=\"device-status status-secondary\">\u0432\u0442\u043e\u0440\u043e\u0439</span></div>\n<div class=\"device-specs\">\u0420\u0435\u0437\u0435\u0440\u0432\u043d\u044b\u0439 \u0442\u0435\u043b\u0435\u0444\u043e\u043d</div>\n</div>\n</div>\n<div class=\"device-category\">\n<h3>\ud83d\udcbb \u041f\u041a</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Windows 11</div>\n<div class=\"device-specs\">Intel Core i3-10105F @ 3.70GHz<br/>NVIDIA GTX 950<br/>16GB DDR4</div>\n</div>\n</div>\n<div class=\"device-category\">\n<h3>\ud83d\udcbb \u041d\u043e\u0443\u0442\u0431\u0443\u043a</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Asus Vivobook S 15</div>\n<div class=\"device-specs\">\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u043d\u043e\u0443\u0442\u0431\u0443\u043a</div>\n</div>\n</div>\n<div class=\"device-category\">\n<h3>\u23f0 \u0413\u0430\u0434\u0436\u0435\u0442\u044b</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Pixel Watch 1</div>\n<div class=\"device-specs\">\u0427\u0430\u0441\u044b \u043d\u0430 Wear OS</div>\n</div>\n<div class=\"device-item\">\n<div class=\"device-name\">Pixel Buds A-series</div>\n<div class=\"device-specs\">\u0411\u0435\u0441\u043f\u0440\u043e\u0432\u043e\u0434\u043d\u044b\u0435 \u043d\u0430\u0443\u0448\u043d\u0438\u043a\u0438</div>\n</div>\n</div>\n\n";
+    devicesWrap.querySelectorAll('[onclick]').forEach(el => el.removeAttribute('onclick'));
+    tabDevices.appendChild(devicesWrap);
+
+    const tabInfo = document.createElement('div');
+    tabInfo.id = 'tab-info';
+    tabInfo.className = 'tab-panel';
+
+    const bio = document.querySelector('#welcome-overlay p');
+    if (bio) {
+      const card = document.createElement('div');
+      card.className = 'md3-surface';
+
+      const title = document.createElement('div');
+      title.className = 'm3-info-title';
+      title.textContent = 'info';
+
+      const p = document.createElement('p');
+      p.textContent = bio.textContent;
+      p.style.margin = '0';
+
+      card.appendChild(title);
+      card.appendChild(p);
+      tabInfo.appendChild(card);
+    }
+
+    // Pets block
+    const petsBlock = document.createElement('div');
+    petsBlock.className = 'm3-pets-block';
+    const petsTitle = document.createElement('div');
+    petsTitle.className = 'm3-info-title';
+    petsTitle.textContent = 'мои питомцы';
+    const petsList = document.createElement('div');
+    petsList.className = 'm3-pets-list';
+
+    const petsArr = [["Lukas", "\u0448\u043f\u0438\u0446", "1 \u0433\u043e\u0434", "31 \u0438\u044e\u043b\u044f"], ["Umka", "\u0448\u043f\u0438\u0446", "1 \u0433\u043e\u0434", "31 \u0438\u044e\u043b\u044f"], ["Vishnya", "\u0448\u043f\u0438\u0446", "1 \u0433\u043e\u0434", "31 \u0438\u044e\u043b\u044f"], ["Jetta", "\u043f\u043e\u043c\u0447\u0438", "5 \u043b\u0435\u0442", "8 \u0444\u0435\u0432\u0440\u0430\u043b\u044f"]];
+    petsArr.forEach(it => {
+      const row = document.createElement('div');
+      row.className = 'm3-pet-row';
+      const name = document.createElement('span');
+      name.className = 'm3-pet-name';
+      name.textContent = it[0];
+      const meta = document.createElement('span');
+      meta.className = 'm3-pet-meta';
+      meta.textContent = `${it[1]} • ${it[2]} • ${it[3]}`;
+      row.appendChild(name);
+      row.appendChild(meta);
+      petsList.appendChild(row);
+    });
+
+    petsBlock.appendChild(petsTitle);
+    petsBlock.appendChild(petsList);
+    tabInfo.appendChild(petsBlock);
+
+    const bday = document.createElement('div');
+    bday.className = 'm3-bday-card';
+    const bTitle = document.createElement('div');
+    bTitle.className = 'm3-info-title';
+    bTitle.textContent = 'мой день рождения';
+    const bText = document.createElement('div');
+    bText.className = 'm3-bday-text';
+    bText.textContent = '10 ноября';
+    bday.appendChild(bTitle);
+    bday.appendChild(bText);
+    tabInfo.appendChild(bday);
+
+    stage.appendChild(tabMain);
+    stage.appendChild(tabLinks);
+    stage.appendChild(tabDevices);
+    stage.appendChild(tabInfo);
+
+    // replace content only when everything is ready
+    surface.innerHTML = '';
+    surface.appendChild(stage);
+
+    const order = ['main','links','devices','info'];
+    const panels = { main: tabMain, links: tabLinks, devices: tabDevices, info: tabInfo };
+
+    const nav = document.querySelector('.m3-bottom-nav');
+    const items = nav ? Array.from(nav.querySelectorAll('.m3-nav-item')) : [];
+
+    function setStageHeight(panel){
+      if (!panel) return;
+      requestAnimationFrame(() => {
+        stage.style.height = Math.max(1, panel.offsetHeight) + 'px';
+      });
+    }
+
+    function scrubCopyButtons(){
+      ['tab-main','tab-devices','tab-info'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.querySelectorAll('.copy-btn').forEach(b => b.remove());
+      });
+    }
+
+    function animateTo(tab){
+      const current = body.getAttribute('data-tab') || 'main';
+      if (tab === current) return;
+      const oldP = panels[current];
+      const newP = panels[tab];
+      if (!newP) return;
+
+      const dir = order.indexOf(tab) >= order.indexOf(current) ? 1 : -1;
+
+      newP.classList.add('active');
+      newP.classList.add(dir > 0 ? 'from-right' : 'from-left');
+      if (oldP) oldP.classList.add(dir > 0 ? 'to-left' : 'to-right');
+
+      newP.offsetWidth;
+      newP.classList.remove('from-right','from-left');
+
+      body.setAttribute('data-tab', tab);
+      localStorage.setItem('tab', tab);
+      items.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+
+      setStageHeight(newP);
+
+      setTimeout(() => {
+        if (oldP) oldP.classList.remove('active','to-left','to-right');
+        scrubCopyButtons();
+      }, 240);
+    }
+
+    const saved = localStorage.getItem('tab') || 'main';
+    body.setAttribute('data-tab', saved);
+    Object.values(panels).forEach(p => p.classList.remove('active'));
+    (panels[saved] || tabMain).classList.add('active');
+    items.forEach(b => b.classList.toggle('active', b.dataset.tab === saved));
+    setStageHeight(panels[saved] || tabMain);
+    scrubCopyButtons();
+
+    items.forEach(b => b.addEventListener('click', () => animateTo(b.dataset.tab)));
+    window.addEventListener('resize', () => setStageHeight(panels[body.getAttribute('data-tab') || 'main']));
+  } catch (e) {
+    // if anything fails, keep the original page visible
+    console.error(e);
+  }
+})();
+</script>
+<script>
+// === selectTheme smooth wrapper ===
+(function(){
+  function wrap(){
+    if (typeof window.selectTheme !== 'function') return;
+    if (window.selectTheme.__wrapped) return;
+    const original = window.selectTheme;
+    const wrapped = function(theme){
+      const run = () => original(theme);
+      if (document.startViewTransition) document.startViewTransition(run);
+      else run();
+    };
+    wrapped.__wrapped = true;
+    window.selectTheme = wrapped;
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wrap);
+  else wrap();
+})();
+</script>
+<script>
+// === theme corner wiring ===
+(function(){
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+
+  function readTheme(){
+    return document.body.getAttribute('data-theme') || localStorage.getItem('theme') || 'dark';
+  }
+  function sync(){ toggle.checked = (readTheme() === 'dark'); }
+
+  const obs = new MutationObserver(sync);
+  obs.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
+
+  toggle.addEventListener('change', () => {
+    const theme = toggle.checked ? 'dark' : 'light';
+    const run = () => {
+      if (typeof window.selectTheme === 'function') window.selectTheme(theme);
+      else {
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+      }
+    };
+    if (document.startViewTransition) document.startViewTransition(run);
+    else run();
+  });
+
+  sync();
+})();
+</script>
 </body>
 </html>
