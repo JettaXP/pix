@@ -776,135 +776,180 @@
         }
 
 
-        /* === tabs + bottom nav (bootfix) === */
-        body{ padding-bottom: 92px; }
+/* === jettax tabs bundle === */
+body{ padding-bottom: 92px; }
 
-        .m3-bottom-nav{
-            position: fixed;
-            left: 50%;
-            bottom: 14px;
-            transform: translateX(-50%);
-            width: min(520px, calc(100vw - 24px));
-            height: 64px;
-            border-radius: 28px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            align-items: center;
-            gap: 4px;
-            padding: 6px;
-            background: rgba(30, 30, 35, 0.78);
-            border: 1px solid rgba(187, 134, 252, 0.18);
-            backdrop-filter: blur(14px);
-            z-index: 90;
-        }
-        body[data-theme="light"] .m3-bottom-nav{
-            background: rgba(255,255,255,.82);
-            border: 1px solid rgba(0,0,0,.12);
-        }
+.m3-bottom-nav{
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  width: min(520px, calc(100vw - 24px));
+  height: 64px;
+  border-radius: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  background: rgba(30, 30, 35, 0.78);
+  border: 1px solid rgba(187, 134, 252, 0.18);
+  backdrop-filter: blur(14px);
+  z-index: 90;
+}
+body[data-theme="light"] .m3-bottom-nav{
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(0,0,0,.12);
+}
 
-        .m3-nav-item{
-            appearance: none;
-            border: 0;
-            background: transparent;
-            color: var(--text-primary);
-            height: 52px;
-            border-radius: 22px;
-            display: grid;
-            place-items: center;
-            cursor: pointer;
-            position: relative;
-            gap: 2px;
-            padding: 6px 6px;
-            transition: transform 140ms ease;
-        }
-        .m3-nav-item:active{ transform: scale(0.98); }
-        .m3-nav-item::before{
-            content: "";
-            position: absolute;
-            inset: 6px;
-            border-radius: 18px;
-            background: transparent;
-            transition: background-color 180ms ease;
-        }
-        .m3-nav-item.active::before{
-            background: color-mix(in srgb, var(--accent-primary) 26%, transparent);
-        }
+.m3-nav-item{
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  height: 52px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  position: relative;
+  gap: 2px;
+  padding: 6px 6px;
+  transition: transform 140ms ease;
+}
+.m3-nav-item:active{ transform: scale(0.98); }
+.m3-nav-item::before{
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 18px;
+  background: transparent;
+  transition: background-color 180ms ease;
+}
+.m3-nav-item.active::before{
+  background: color-mix(in srgb, var(--accent-primary) 26%, transparent);
+}
 
-        .m3-nav-icon{ position: relative; z-index: 1; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; }
-        .m3-nav-icon svg{ width: 22px; height: 22px; fill: currentColor; opacity: 0.92; }
-        .m3-nav-img{ width: 22px; height: 22px; display:block; border-radius: 6px; }
-        .m3-nav-label{ position: relative; z-index: 1; font-size: 0.72rem; letter-spacing: 0.2px; opacity: 0.9; }
+.m3-nav-icon{
+  position: relative;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.m3-nav-icon svg{ width: 22px; height: 22px; fill: currentColor; opacity: 0.92; }
+.m3-nav-img{ width: 22px; height: 22px; display:block; border-radius: 6px; }
 
-        .tab-stage{ position: relative; width: 100%; transition: height 240ms ease; }
-        .tab-panel{
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            opacity: 0;
-            transform: translate3d(18px, 0, 0) scale(0.99);
-            transition: opacity 220ms ease, transform 220ms ease;
-            pointer-events: none;
-        }
-        .tab-panel.active{ opacity: 1; transform: translate3d(0,0,0) scale(1); pointer-events: auto; }
-        .tab-panel.from-right{ opacity: 0; transform: translate3d(22px,0,0) scale(0.99); }
-        .tab-panel.from-left{ opacity: 0; transform: translate3d(-22px,0,0) scale(0.99); }
-        .tab-panel.to-left{ opacity: 0; transform: translate3d(-22px,0,0) scale(0.99); }
-        .tab-panel.to-right{ opacity: 0; transform: translate3d(22px,0,0) scale(0.99); }
+.m3-nav-label{
+  position: relative;
+  z-index: 1;
+  font-size: 0.72rem;
+  letter-spacing: 0.2px;
+  opacity: 0.9;
+}
 
-        .m3-main-hint{
-            margin: 0 0 12px;
-            padding: 12px 14px;
-            border-radius: 18px;
-            background: color-mix(in srgb, var(--bg-secondary) 88%, transparent);
-            border: 1px solid color-mix(in srgb, var(--accent-primary) 16%, transparent);
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            line-height: 1.25;
-            box-sizing: border-box;
-        }
+.tab-stage{ position: relative; width: 100%; transition: height 240ms ease; }
+.tab-panel{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translate3d(18px, 0, 0) scale(0.99);
+  transition: opacity 220ms ease, transform 220ms ease;
+  pointer-events: none;
+}
+.tab-panel.active{ opacity: 1; transform: translate3d(0,0,0) scale(1); pointer-events: auto; }
+.tab-panel.from-right{ opacity: 0; transform: translate3d(22px,0,0) scale(0.99); }
+.tab-panel.from-left{ opacity: 0; transform: translate3d(-22px,0,0) scale(0.99); }
+.tab-panel.to-left{ opacity: 0; transform: translate3d(-22px,0,0) scale(0.99); }
+.tab-panel.to-right{ opacity: 0; transform: translate3d(22px,0,0) scale(0.99); }
 
-        #tab-info .md3-surface{ padding: 14px 16px !important; overflow: visible; }
-        .m3-info-title{ margin: 0 0 8px; font-weight: 700; opacity: 0.95; }
+.m3-main-hint{
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--bg-secondary) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 16%, transparent);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.25;
+  box-sizing: border-box;
+}
 
-        /* pets + birthday */
-        .m3-pets-block{
-            margin-top: 12px;
-            padding: 14px 16px;
-            border-radius: 18px;
-            background: color-mix(in srgb, var(--bg-secondary) 88%, transparent);
-            border: 1px solid color-mix(in srgb, var(--accent-primary) 14%, transparent);
-        }
-        .m3-pets-list{ display: grid; gap: 10px; margin-top: 10px; }
-        .m3-pet-row{ display:flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-        .m3-pet-name{ font-weight: 700; color: var(--text-primary); }
-        .m3-pet-meta{ color: var(--text-secondary); font-size: 0.95rem; }
-        .m3-bday-card{
-            margin-top: 12px;
-            padding: 14px 16px;
-            border-radius: 18px;
-            background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
-            border: 1px solid color-mix(in srgb, var(--accent-primary) 22%, transparent);
-        }
-        .m3-bday-text{ font-size: 1.05rem; color: var(--text-primary); opacity: .95; }
+#tab-info .md3-surface{ padding: 14px 16px !important; overflow: visible; }
+.m3-info-title{ margin: 0 0 8px; font-weight: 700; opacity: 0.95; }
 
-        /* no copy buttons outside links */
-        body[data-tab="main"] .copy-btn,
-        body[data-tab="devices"] .copy-btn,
-        body[data-tab="info"] .copy-btn{ display:none !important; pointer-events:none !important; }
+/* pets + birthday */
+.m3-pets-block{
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--bg-secondary) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 14%, transparent);
+}
+.m3-pets-list{ display: grid; gap: 10px; margin-top: 10px; }
+.m3-pet-row{ display:flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.m3-pet-name{ font-weight: 700; color: var(--text-primary); }
+.m3-pet-meta{ color: var(--text-secondary); font-size: 0.95rem; }
+.m3-bday-card{
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 22%, transparent);
+}
+.m3-bday-text{ font-size: 1.05rem; color: var(--text-primary); opacity: .95; }
 
-        .devices-close-hint{ display:none !important; }
+/* disable copy outside links tab */
+body[data-tab="main"] .copy-btn,
+body[data-tab="devices"] .copy-btn,
+body[data-tab="info"] .copy-btn{ display:none !important; pointer-events:none !important; }
 
-        /* theme change smooth fallback */
-        body, .md3-surface, .link-item, .devices-card, .device-item, .m3-bottom-nav, .m3-theme-corner{
-            transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease;
-        }
-    </style>
+/* hide old hint */
+.devices-close-hint{ display:none !important; }
+
+/* theme smooth fallback */
+body, .md3-surface, .link-item, .devices-card, .device-item, .m3-bottom-nav, .m3-theme-corner{
+  transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease;
+}
+
+/* theme corner switch */
+.m3-theme-corner{
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 95;
+  pointer-events: auto;
+  padding: 8px 12px;
+  border-radius: 18px;
+  background: rgba(30, 30, 35, 0.78);
+  border: 1px solid rgba(187, 134, 252, 0.25);
+  backdrop-filter: blur(12px);
+}
+body[data-theme="light"] .m3-theme-corner{
+  background: rgba(255,255,255,.80);
+  border: 1px solid rgba(0,0,0,.12);
+}
+.m3-theme-label{ font-size: 0.85rem; color: var(--text-primary); opacity: .92; user-select: none; white-space: nowrap; }
+
+.m3-switch{ --track-w: 52px; --track-h: 32px; --thumb: 24px; position: relative; width: var(--track-w); height: var(--track-h); display: inline-flex; align-items: center; cursor: pointer; user-select: none; }
+.m3-switch > input{ position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.m3-switch__track{ position: absolute; inset: 0; border-radius: 999px; background: color-mix(in srgb, var(--text-primary) 12%, transparent); border: 1px solid color-mix(in srgb, var(--text-primary) 24%, transparent); transition: background-color 200ms ease, border-color 200ms ease; }
+.m3-switch__thumb{ position: absolute; left: 4px; top: 50%; width: var(--thumb); height: var(--thumb); border-radius: 999px; transform: translateY(-50%); background: var(--bg-primary); box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 6px 18px rgba(0,0,0,.10); transition: left 200ms ease, background-color 200ms ease; }
+.m3-switch > input:checked ~ .m3-switch__track{ background: color-mix(in srgb, var(--accent-primary) 30%, transparent); border-color: color-mix(in srgb, var(--accent-primary) 55%, transparent); }
+.m3-switch > input:checked ~ .m3-switch__thumb{ left: calc(var(--track-w) - var(--thumb) - 4px); background: var(--accent-primary); }
+</style>
 </head>
 <body>
 <div aria-label="theme switch" class="m3-theme-corner">
 <span class="m3-theme-label">тема</span>
-<label aria-label="тема" class="m3-switch" title="тема">
+<label aria-label="тема" class="m3-switch">
 <input id="themeToggle" type="checkbox"/>
 <span class="m3-switch__track"></span>
 <span class="m3-switch__thumb"></span>
@@ -1412,185 +1457,10 @@ function draw() {
 </nav>
 
 <script>
-// === tabs smooth (bootfix) ===
+// === jettax tabs bundle ===
 (function(){
-  try {
-    const body = document.body;
-    const content = document.getElementById('main-content');
-    const surface = content ? content.querySelector('.md3-surface') : null;
-    if (!content || !surface) return;
-
-    const player = surface.querySelector('.player-section');
-    const links = surface.querySelector('.links-section');
-    if (!player || !links) return; // if layout changed, keep original page visible
-
-    const stage = document.createElement('div');
-    stage.className = 'tab-stage';
-
-    const tabMain = document.createElement('div');
-    tabMain.id = 'tab-main';
-    tabMain.className = 'tab-panel';
-
-    const hint = document.createElement('div');
-    hint.className = 'm3-main-hint';
-    hint.textContent = 'это моё био. тут есть мои линки и другая инфа.';
-    tabMain.appendChild(hint);
-    tabMain.appendChild(player);
-
-    const tabLinks = document.createElement('div');
-    tabLinks.id = 'tab-links';
-    tabLinks.className = 'tab-panel';
-    tabLinks.appendChild(links);
-
-    const tabDevices = document.createElement('div');
-    tabDevices.id = 'tab-devices';
-    tabDevices.className = 'tab-panel';
-
-    const devicesWrap = document.createElement('div');
-    devicesWrap.className = 'devices-card';
-    devicesWrap.innerHTML = "\n<h2>\u041c\u043e\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430</h2>\n<div class=\"device-category\">\n<h3>\ud83d\udcf1 \u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Pixel 7a <span class=\"device-status status-rip\">rip battery</span></div>\n<div class=\"device-specs\">\u041e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u0442\u0435\u043b\u0435\u0444\u043e\u043d</div>\n</div>\n<div class=\"device-item\">\n<div class=\"device-name\">Huawei INE-LX1 <span class=\"device-status status-secondary\">\u0432\u0442\u043e\u0440\u043e\u0439</span></div>\n<div class=\"device-specs\">\u0420\u0435\u0437\u0435\u0440\u0432\u043d\u044b\u0439 \u0442\u0435\u043b\u0435\u0444\u043e\u043d</div>\n</div>\n</div>\n<div class=\"device-category\">\n<h3>\ud83d\udcbb \u041f\u041a</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Windows 11</div>\n<div class=\"device-specs\">Intel Core i3-10105F @ 3.70GHz<br/>NVIDIA GTX 950<br/>16GB DDR4</div>\n</div>\n</div>\n<div class=\"device-category\">\n<h3>\ud83d\udcbb \u041d\u043e\u0443\u0442\u0431\u0443\u043a</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Asus Vivobook S 15</div>\n<div class=\"device-specs\">\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u043d\u043e\u0443\u0442\u0431\u0443\u043a</div>\n</div>\n</div>\n<div class=\"device-category\">\n<h3>\u23f0 \u0413\u0430\u0434\u0436\u0435\u0442\u044b</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Pixel Watch 1</div>\n<div class=\"device-specs\">\u0427\u0430\u0441\u044b \u043d\u0430 Wear OS</div>\n</div>\n<div class=\"device-item\">\n<div class=\"device-name\">Pixel Buds A-series</div>\n<div class=\"device-specs\">\u0411\u0435\u0441\u043f\u0440\u043e\u0432\u043e\u0434\u043d\u044b\u0435 \u043d\u0430\u0443\u0448\u043d\u0438\u043a\u0438</div>\n</div>\n</div>\n\n";
-    devicesWrap.querySelectorAll('[onclick]').forEach(el => el.removeAttribute('onclick'));
-    tabDevices.appendChild(devicesWrap);
-
-    const tabInfo = document.createElement('div');
-    tabInfo.id = 'tab-info';
-    tabInfo.className = 'tab-panel';
-
-    const bio = document.querySelector('#welcome-overlay p');
-    if (bio) {
-      const card = document.createElement('div');
-      card.className = 'md3-surface';
-
-      const title = document.createElement('div');
-      title.className = 'm3-info-title';
-      title.textContent = 'info';
-
-      const p = document.createElement('p');
-      p.textContent = bio.textContent;
-      p.style.margin = '0';
-
-      card.appendChild(title);
-      card.appendChild(p);
-      tabInfo.appendChild(card);
-    }
-
-    // Pets block
-    const petsBlock = document.createElement('div');
-    petsBlock.className = 'm3-pets-block';
-    const petsTitle = document.createElement('div');
-    petsTitle.className = 'm3-info-title';
-    petsTitle.textContent = 'мои питомцы';
-    const petsList = document.createElement('div');
-    petsList.className = 'm3-pets-list';
-
-    const petsArr = [["Lukas", "\u0448\u043f\u0438\u0446", "1 \u0433\u043e\u0434", "31 \u0438\u044e\u043b\u044f"], ["Umka", "\u0448\u043f\u0438\u0446", "1 \u0433\u043e\u0434", "31 \u0438\u044e\u043b\u044f"], ["Vishnya", "\u0448\u043f\u0438\u0446", "1 \u0433\u043e\u0434", "31 \u0438\u044e\u043b\u044f"], ["Jetta", "\u043f\u043e\u043c\u0447\u0438", "5 \u043b\u0435\u0442", "8 \u0444\u0435\u0432\u0440\u0430\u043b\u044f"]];
-    petsArr.forEach(it => {
-      const row = document.createElement('div');
-      row.className = 'm3-pet-row';
-      const name = document.createElement('span');
-      name.className = 'm3-pet-name';
-      name.textContent = it[0];
-      const meta = document.createElement('span');
-      meta.className = 'm3-pet-meta';
-      meta.textContent = `${it[1]} • ${it[2]} • ${it[3]}`;
-      row.appendChild(name);
-      row.appendChild(meta);
-      petsList.appendChild(row);
-    });
-
-    petsBlock.appendChild(petsTitle);
-    petsBlock.appendChild(petsList);
-    tabInfo.appendChild(petsBlock);
-
-    const bday = document.createElement('div');
-    bday.className = 'm3-bday-card';
-    const bTitle = document.createElement('div');
-    bTitle.className = 'm3-info-title';
-    bTitle.textContent = 'мой день рождения';
-    const bText = document.createElement('div');
-    bText.className = 'm3-bday-text';
-    bText.textContent = '10 ноября';
-    bday.appendChild(bTitle);
-    bday.appendChild(bText);
-    tabInfo.appendChild(bday);
-
-    stage.appendChild(tabMain);
-    stage.appendChild(tabLinks);
-    stage.appendChild(tabDevices);
-    stage.appendChild(tabInfo);
-
-    // replace content only when everything is ready
-    surface.innerHTML = '';
-    surface.appendChild(stage);
-
-    const order = ['main','links','devices','info'];
-    const panels = { main: tabMain, links: tabLinks, devices: tabDevices, info: tabInfo };
-
-    const nav = document.querySelector('.m3-bottom-nav');
-    const items = nav ? Array.from(nav.querySelectorAll('.m3-nav-item')) : [];
-
-    function setStageHeight(panel){
-      if (!panel) return;
-      requestAnimationFrame(() => {
-        stage.style.height = Math.max(1, panel.offsetHeight) + 'px';
-      });
-    }
-
-    function scrubCopyButtons(){
-      ['tab-main','tab-devices','tab-info'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.querySelectorAll('.copy-btn').forEach(b => b.remove());
-      });
-    }
-
-    function animateTo(tab){
-      const current = body.getAttribute('data-tab') || 'main';
-      if (tab === current) return;
-      const oldP = panels[current];
-      const newP = panels[tab];
-      if (!newP) return;
-
-      const dir = order.indexOf(tab) >= order.indexOf(current) ? 1 : -1;
-
-      newP.classList.add('active');
-      newP.classList.add(dir > 0 ? 'from-right' : 'from-left');
-      if (oldP) oldP.classList.add(dir > 0 ? 'to-left' : 'to-right');
-
-      newP.offsetWidth;
-      newP.classList.remove('from-right','from-left');
-
-      body.setAttribute('data-tab', tab);
-      localStorage.setItem('tab', tab);
-      items.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
-
-      setStageHeight(newP);
-
-      setTimeout(() => {
-        if (oldP) oldP.classList.remove('active','to-left','to-right');
-        scrubCopyButtons();
-      }, 240);
-    }
-
-    const saved = localStorage.getItem('tab') || 'main';
-    body.setAttribute('data-tab', saved);
-    Object.values(panels).forEach(p => p.classList.remove('active'));
-    (panels[saved] || tabMain).classList.add('active');
-    items.forEach(b => b.classList.toggle('active', b.dataset.tab === saved));
-    setStageHeight(panels[saved] || tabMain);
-    scrubCopyButtons();
-
-    items.forEach(b => b.addEventListener('click', () => animateTo(b.dataset.tab)));
-    window.addEventListener('resize', () => setStageHeight(panels[body.getAttribute('data-tab') || 'main']));
-  } catch (e) {
-    // if anything fails, keep the original page visible
-    console.error(e);
-  }
-})();
-</script>
-<script>
-// === selectTheme smooth wrapper ===
-(function(){
-  function wrap(){
+  // smooth theme for welcome overlay buttons (and any selectTheme call)
+  function wrapSelectTheme(){
     if (typeof window.selectTheme !== 'function') return;
     if (window.selectTheme.__wrapped) return;
     const original = window.selectTheme;
@@ -1602,38 +1472,215 @@ function draw() {
     wrapped.__wrapped = true;
     window.selectTheme = wrapped;
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wrap);
-  else wrap();
-})();
-</script>
-<script>
-// === theme corner wiring ===
-(function(){
-  const toggle = document.getElementById('themeToggle');
-  if (!toggle) return;
 
-  function readTheme(){
-    return document.body.getAttribute('data-theme') || localStorage.getItem('theme') || 'dark';
+  function initThemeCorner(){
+    const t = document.getElementById('themeToggle');
+    if (!t) return;
+
+    const read = () => document.body.getAttribute('data-theme') || localStorage.getItem('theme') || 'dark';
+    const sync = () => { t.checked = (read() === 'dark'); };
+
+    const obs = new MutationObserver(sync);
+    obs.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
+
+    t.addEventListener('change', () => {
+      const theme = t.checked ? 'dark' : 'light';
+      const run = () => {
+        if (typeof window.selectTheme === 'function') window.selectTheme(theme);
+        else {
+          document.body.setAttribute('data-theme', theme);
+          localStorage.setItem('theme', theme);
+        }
+      };
+      if (document.startViewTransition) document.startViewTransition(run);
+      else run();
+    });
+
+    sync();
   }
-  function sync(){ toggle.checked = (readTheme() === 'dark'); }
 
-  const obs = new MutationObserver(sync);
-  obs.observe(document.body, { attributes: true, attributeFilter: ['data-theme'] });
+  function initTabs(){
+    try {
+      const body = document.body;
+      const content = document.getElementById('main-content');
+      const surface = content ? content.querySelector('.md3-surface') : null;
+      if (!content || !surface) return;
 
-  toggle.addEventListener('change', () => {
-    const theme = toggle.checked ? 'dark' : 'light';
-    const run = () => {
-      if (typeof window.selectTheme === 'function') window.selectTheme(theme);
-      else {
-        document.body.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
+      const player = surface.querySelector('.player-section');
+      const links = surface.querySelector('.links-section');
+      if (!player || !links) return; // keep original if layout differs
+
+      const stage = document.createElement('div');
+      stage.className = 'tab-stage';
+
+      const tabMain = document.createElement('div');
+      tabMain.id = 'tab-main';
+      tabMain.className = 'tab-panel';
+
+      const hint = document.createElement('div');
+      hint.className = 'm3-main-hint';
+      hint.textContent = 'это моё био. тут есть мои линки и другая инфа.';
+      tabMain.appendChild(hint);
+      tabMain.appendChild(player);
+
+      const tabLinks = document.createElement('div');
+      tabLinks.id = 'tab-links';
+      tabLinks.className = 'tab-panel';
+      tabLinks.appendChild(links);
+
+      const tabDevices = document.createElement('div');
+      tabDevices.id = 'tab-devices';
+      tabDevices.className = 'tab-panel';
+
+      const devicesWrap = document.createElement('div');
+      devicesWrap.className = 'devices-card';
+      devicesWrap.innerHTML = "\n<h2>\u041c\u043e\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430</h2>\n<div class=\"device-category\">\n<h3>\ud83d\udcf1 \u0422\u0435\u043b\u0435\u0444\u043e\u043d\u044b</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Pixel 7a <span class=\"device-status status-rip\">rip battery</span></div>\n<div class=\"device-specs\">\u041e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u0442\u0435\u043b\u0435\u0444\u043e\u043d</div>\n</div>\n<div class=\"device-item\">\n<div class=\"device-name\">Huawei INE-LX1 <span class=\"device-status status-secondary\">\u0432\u0442\u043e\u0440\u043e\u0439</span></div>\n<div class=\"device-specs\">\u0420\u0435\u0437\u0435\u0440\u0432\u043d\u044b\u0439 \u0442\u0435\u043b\u0435\u0444\u043e\u043d</div>\n</div>\n</div>\n<div class=\"device-category\">\n<h3>\ud83d\udcbb \u041f\u041a</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Windows 11</div>\n<div class=\"device-specs\">Intel Core i3-10105F @ 3.70GHz<br/>NVIDIA GTX 950<br/>16GB DDR4</div>\n</div>\n</div>\n<div class=\"device-category\">\n<h3>\ud83d\udcbb \u041d\u043e\u0443\u0442\u0431\u0443\u043a</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Asus Vivobook S 15</div>\n<div class=\"device-specs\">\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u043d\u043e\u0443\u0442\u0431\u0443\u043a</div>\n</div>\n</div>\n<div class=\"device-category\">\n<h3>\u23f0 \u0413\u0430\u0434\u0436\u0435\u0442\u044b</h3>\n<div class=\"device-item\">\n<div class=\"device-name\">Pixel Watch 1</div>\n<div class=\"device-specs\">\u0427\u0430\u0441\u044b \u043d\u0430 Wear OS</div>\n</div>\n<div class=\"device-item\">\n<div class=\"device-name\">Pixel Buds A-series</div>\n<div class=\"device-specs\">\u0411\u0435\u0441\u043f\u0440\u043e\u0432\u043e\u0434\u043d\u044b\u0435 \u043d\u0430\u0443\u0448\u043d\u0438\u043a\u0438</div>\n</div>\n</div>\n\n";
+      devicesWrap.querySelectorAll('[onclick]').forEach(el => el.removeAttribute('onclick'));
+      tabDevices.appendChild(devicesWrap);
+
+      const tabInfo = document.createElement('div');
+      tabInfo.id = 'tab-info';
+      tabInfo.className = 'tab-panel';
+
+      const bio = document.querySelector('#welcome-overlay p');
+      if (bio) {
+        const card = document.createElement('div');
+        card.className = 'md3-surface';
+
+        const title = document.createElement('div');
+        title.className = 'm3-info-title';
+        title.textContent = 'info';
+
+        const p = document.createElement('p');
+        p.textContent = bio.textContent;
+        p.style.margin = '0';
+
+        card.appendChild(title);
+        card.appendChild(p);
+        tabInfo.appendChild(card);
       }
-    };
-    if (document.startViewTransition) document.startViewTransition(run);
-    else run();
-  });
 
-  sync();
+      // pets
+      const petsBlock = document.createElement('div');
+      petsBlock.className = 'm3-pets-block';
+
+      const petsTitle = document.createElement('div');
+      petsTitle.className = 'm3-info-title';
+      petsTitle.textContent = 'мои питомцы';
+
+      const petsList = document.createElement('div');
+      petsList.className = 'm3-pets-list';
+
+      const petsArr = [["Lukas", "\u0448\u043f\u0438\u0446", "1 \u0433\u043e\u0434", "31 \u0438\u044e\u043b\u044f"], ["Umka", "\u0448\u043f\u0438\u0446", "1 \u0433\u043e\u0434", "31 \u0438\u044e\u043b\u044f"], ["Vishnya", "\u0448\u043f\u0438\u0446", "1 \u0433\u043e\u0434", "31 \u0438\u044e\u043b\u044f"], ["Jetta", "\u043f\u043e\u043c\u0447\u0438", "5 \u043b\u0435\u0442", "8 \u0444\u0435\u0432\u0440\u0430\u043b\u044f"]];
+      petsArr.forEach(it => {
+        const row = document.createElement('div');
+        row.className = 'm3-pet-row';
+
+        const name = document.createElement('span');
+        name.className = 'm3-pet-name';
+        name.textContent = it[0];
+
+        const meta = document.createElement('span');
+        meta.className = 'm3-pet-meta';
+        meta.textContent = `${it[1]} • ${it[2]} • ${it[3]}`;
+
+        row.appendChild(name);
+        row.appendChild(meta);
+        petsList.appendChild(row);
+      });
+
+      petsBlock.appendChild(petsTitle);
+      petsBlock.appendChild(petsList);
+      tabInfo.appendChild(petsBlock);
+
+      const bday = document.createElement('div');
+      bday.className = 'm3-bday-card';
+      bday.innerHTML = `<div class="m3-info-title">мой день рождения</div><div class="m3-bday-text">10 ноября</div>`;
+      tabInfo.appendChild(bday);
+
+      stage.appendChild(tabMain);
+      stage.appendChild(tabLinks);
+      stage.appendChild(tabDevices);
+      stage.appendChild(tabInfo);
+
+      // only now replace
+      surface.innerHTML = '';
+      surface.appendChild(stage);
+
+      const order = ['main','links','devices','info'];
+      const panels = { main: tabMain, links: tabLinks, devices: tabDevices, info: tabInfo };
+      const nav = document.querySelector('.m3-bottom-nav');
+      const items = nav ? Array.from(nav.querySelectorAll('.m3-nav-item')) : [];
+
+      function setStageHeight(panel){
+        if (!panel) return;
+        requestAnimationFrame(() => {
+          stage.style.height = Math.max(1, panel.offsetHeight) + 'px';
+        });
+      }
+
+      function scrubCopyButtons(){
+        ['tab-main','tab-devices','tab-info'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.querySelectorAll('.copy-btn').forEach(b => b.remove());
+        });
+      }
+
+      function animateTo(tab){
+        const current = body.getAttribute('data-tab') || 'main';
+        if (tab === current) return;
+
+        const oldP = panels[current];
+        const newP = panels[tab];
+        if (!newP) return;
+
+        const dir = order.indexOf(tab) >= order.indexOf(current) ? 1 : -1;
+
+        newP.classList.add('active');
+        newP.classList.add(dir > 0 ? 'from-right' : 'from-left');
+        if (oldP) oldP.classList.add(dir > 0 ? 'to-left' : 'to-right');
+
+        newP.offsetWidth;
+        newP.classList.remove('from-right','from-left');
+
+        body.setAttribute('data-tab', tab);
+        localStorage.setItem('tab', tab);
+        items.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+
+        setStageHeight(newP);
+
+        setTimeout(() => {
+          if (oldP) oldP.classList.remove('active','to-left','to-right');
+          scrubCopyButtons();
+        }, 240);
+      }
+
+      const saved = localStorage.getItem('tab') || 'main';
+      body.setAttribute('data-tab', saved);
+      Object.values(panels).forEach(p => p.classList.remove('active'));
+      (panels[saved] || tabMain).classList.add('active');
+      items.forEach(b => b.classList.toggle('active', b.dataset.tab === saved));
+      setStageHeight(panels[saved] || tabMain);
+      scrubCopyButtons();
+
+      items.forEach(b => b.addEventListener('click', () => animateTo(b.dataset.tab)));
+      window.addEventListener('resize', () => setStageHeight(panels[body.getAttribute('data-tab') || 'main']));
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      wrapSelectTheme();
+      initThemeCorner();
+      initTabs();
+    });
+  } else {
+    wrapSelectTheme();
+    initThemeCorner();
+    initTabs();
+  }
 })();
 </script>
 </body>
