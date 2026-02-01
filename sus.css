@@ -1,0 +1,1 @@
+div::before { counter-increment: res; content: "привет " counter(res); }
