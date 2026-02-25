@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>JettaX | Info</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet" />
-    <link href="https://github.com/JettaXP/pix/blob/didloalahvcvk/jettax.png?raw=true" rel="icon" type="image/png" />
+    <link href="https://raw.githubusercontent.com/JettaXP/pix/jettax.xyz/jettax.png" rel="icon" type="image/png" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <style>
@@ -73,7 +73,7 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
         }
 
-        
+
         #welcome-overlay {
             position: fixed;
             top: 0;
@@ -189,7 +189,7 @@
             }
         }
 
-        
+
         .page-wrapper {
             background-color: var(--surface-container);
             padding: 24px;
@@ -224,7 +224,7 @@
             pointer-events: auto
         }
 
-        
+
         @keyframes spin {
             from {
                 transform: rotate(0deg)
@@ -280,7 +280,7 @@
             font-size: 1.1rem
         }
 
-        
+
         .music-player {
             position: relative;
             background-color: var(--surface-variant);
@@ -419,7 +419,7 @@
             }
         }
 
-        
+
         .time-widget-container {
             position: fixed;
             top: 20px;
@@ -454,7 +454,7 @@
             color: var(--text-primary)
         }
 
-        
+
         #links-surface {
             width: 100%;
             margin: 0 !important;
@@ -479,7 +479,7 @@
 
         .link-item {
             position: relative;
-            
+
             display: flex;
             align-items: center;
             padding: 12px 18px;
@@ -611,7 +611,7 @@
         }
 
 
-        
+
         .devices-card {
             max-width: 500px;
             width: 100%;
@@ -700,7 +700,7 @@
             color: #ff6347
         }
 
-        
+
         .android-toast {
             position: fixed;
             top: 20px;
@@ -823,7 +823,7 @@
             color: #1C1B1F;
         }
 
-        
+
         .toast-body {
             font-size: 0.85rem;
             color: #C4C7C5;
@@ -841,10 +841,10 @@
             color: #444746;
         }
 
-        
+
         .android-toast.expanded .toast-body {
             max-height: 150px;
-            
+
             -webkit-line-clamp: unset;
             display: block;
             overflow-y: auto;
@@ -877,7 +877,7 @@
             object-fit: cover;
         }
 
-        
+
         body {
             padding-bottom: 92px
         }
@@ -957,7 +957,7 @@
             opacity: .9
         }
 
-        
+
         .tab-stage {
             position: relative;
             width: 100%;
@@ -1093,7 +1093,7 @@
             pointer-events: none !important
         }
 
-        
+
         .m3-theme-corner {
             position: fixed;
             top: 14px;
@@ -1176,7 +1176,7 @@
             background: var(--accent-primary)
         }
 
-        
+
         .palette-btn {
             background: var(--surface-variant);
             color: var(--text-primary);
@@ -1195,7 +1195,7 @@
             background-color: color-mix(in srgb, var(--accent-primary) 20%, transparent);
         }
 
-        
+
         .color-wheel-overlay {
             position: fixed;
             inset: 0;
@@ -1265,7 +1265,7 @@
             font-family: 'Comfortaa', cursive;
         }
 
-        
+
         body,
         .md3-surface,
         .devices-card,
@@ -1327,7 +1327,7 @@
                 <div class="toast-body" id="toast-msg">Скопировано: ...</div>
             </div>
             <div class="toast-right-avatar">
-                <img src="https://github.com/JettaXP/pix/blob/didloalahvcvk/jettax.png?raw=true" alt="Avatar">
+                <img src="https://raw.githubusercontent.com/JettaXP/pix/jettax.xyz/jettax.png" alt="Avatar">
             </div>
         </div>
     </div>
@@ -1389,7 +1389,7 @@
             <div class="container">
                 <div class="avatar-wrapper">
                     <img class="avatar-img" alt="Avatar"
-                        src="https://github.com/JettaXP/pix/blob/didloalahvcvk/jettax.png?raw=true" />
+                        src="https://raw.githubusercontent.com/JettaXP/pix/jettax.xyz/jettax.png" />
                 </div>
                 <h1>JettaX</h1>
                 <p class="bio">Филипп · Днепр, Украина</p>
@@ -1473,7 +1473,7 @@
     </div>
 
     <script>
-        
+
         const colorWheelPopup = document.getElementById('colorWheelPopup');
         const colorWheelOverlay = document.getElementById('colorWheelOverlay');
         const colorWheel = document.getElementById('colorWheel');
@@ -1551,7 +1551,7 @@
         updateThemeColors(currentHue);
         colorWheelKnob.style.transform = `translate(-50%, -50%) rotate(${currentHue}deg) translateY(-70px)`;
 
-        
+
         const LASTFM_API = 'https://ws.audioscrobbler.com/2.0/';
         const LASTFM_KEY = '9456ce29b8b500ab019e56d2b1ccab1f';
         const LASTFM_USER = 'JettaXP';
@@ -1634,7 +1634,7 @@
             document.getElementById('myClock').textContent = new Date(u + 7200000).toLocaleTimeString('ru-RU');
         }, 1000);
 
-        
+
         (function () {
             const toast = document.getElementById('m3Toast');
             const toastMsg = document.getElementById('toast-msg');
