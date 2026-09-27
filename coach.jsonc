@@ -13,7 +13,7 @@
     { "type": "title", "format": "{#31}{1}@{2}" },
     { "type": "separator", "string": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "color": "35" },
     { "type": "os", "key": "󰀲 OS ", "keyColor": "35", "format": "Android 17 (CP41.260831.007)" },
-    { "type": "kernel", "key": "󰄜 Kernel ", "keyColor": "35", "format": "6.12.81-android16-6-g86553c53da31-ab15878525-4k" },
+    { "type": "kernel", "key": "󰀲 Kernel ", "keyColor": "35", "format": "6.12.81-android16-6-g86553c53da31-ab15878525-4k" },
     { "type": "uptime", "key": "󱎫 Uptime ", "keyColor": "35" },
     { "type": "packages", "key": "󰏖 Packages", "keyColor": "35" },
     { "type": "shell", "key": "󰈺 Shell ", "keyColor": "35" },
