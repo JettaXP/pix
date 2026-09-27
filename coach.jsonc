@@ -1,8 +1,8 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
   "logo": {
-    "type": "auto",
-    "source": "android",
+    "type": "builtin",
+    "source": "Android",
     "padding": {
       "top": 2,
       "right": 4
@@ -16,113 +16,24 @@
     }
   },
   "modules": [
-    {
-      "type": "title",
-      "format": "{#31}{1}@{2}"
-    },
-    {
-      "type": "separator",
-      "string": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
-      "color": "35"
-    },
-    {
-      "type": "os",
-      "key": " OS      ",
-      "keyColor": "35"
-    },
-    {
-      "type": "kernel",
-      "key": " Kernel  ",
-      "keyColor": "35"
-    },
-    {
-      "type": "uptime",
-      "key": "󱎫 Uptime  ",
-      "keyColor": "35"
-    },
-    {
-      "type": "packages",
-      "key": "󰏖 Packages",
-      "keyColor": "35"
-    },
-    {
-      "type": "shell",
-      "key": "󰈺 Shell   ",
-      "keyColor": "35"
-    },
-    {
-      "type": "terminal",
-      "key": "󰄛 Terminal",
-      "keyColor": "35"
-    },
-    {
-      "type": "de",
-      "key": " DE      ",
-      "keyColor": "35"
-    },
-    {
-      "type": "wm",
-      "key": " WM      ",
-      "keyColor": "35"
-    },
-    {
-      "type": "media",
-      "key": "󰝚 Media   ",
-      "keyColor": "35",
-      "format": "{1}{?3} by {3}{?}"
-    },
-    {
-      "type": "break"
-    },
-    {
-      "type": "separator",
-      "string": "── Hardware ────────────────────────────",
-      "color": "34"
-    },
-    {
-      "type": "host",
-      "key": "󰌢 Laptop  ",
-      "keyColor": "34"
-    },
-    {
-      "type": "display",
-      "key": "󰍹 Display ",
-      "keyColor": "34"
-    },
-    {
-      "type": "cpu",
-      "key": " CPU     ",
-      "keyColor": "34"
-    },
-    {
-      "type": "gpu",
-      "key": "󰢮 GPU     ",
-      "keyColor": "34"
-    },
-    {
-      "type": "memory",
-      "key": " Memory  ",
-      "keyColor": "34"
-    },
-    {
-      "type": "disk",
-      "key": " Disk    ",
-      "keyColor": "34"
-    },
-    {
-      "type": "battery",
-      "key": "󰁹 Battery ",
-      "keyColor": "34"
-    },
-    {
-      "type": "break"
-    },
-    {
-      "type": "colors",
-      "symbol": "circle",
-      "block": {
-        "range": [1, 6]
-      }
-    }
+    { "type": "title", "format": "{#31}{1}@{2}" },
+    { "type": "separator", "string": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━", "color": "35" },
+    { "type": "os", "key": " OS ", "keyColor": "35", "format": "Android 17 (CP41.260831.007)" },
+    { "type": "kernel", "key": " Kernel ", "keyColor": "35", "format": "6.12.81-android16-6-g86553c53da31-ab15878525-4k" },
+    { "type": "uptime", "key": "󱎫 Uptime ", "keyColor": "35" },
+    { "type": "packages", "key": "󰏖 Packages", "keyColor": "35" },
+    { "type": "shell", "key": "󰈺 Shell ", "keyColor": "35" },
+    { "type": "terminal", "key": "󰄛 Terminal", "keyColor": "35" },
+    { "type": "break" },
+    { "type": "separator", "string": "── Hardware ────────────────────────────", "color": "34" },
+    { "type": "host", "key": " Phone ", "keyColor": "34", "format": "Google Pixel 7a" },
+    { "type": "display", "key": "󰍹 Display ", "keyColor": "34" },
+    { "type": "cpu", "key": " CPU ", "keyColor": "34" },
+    { "type": "gpu", "key": "󰢮 GPU ", "keyColor": "34" },
+    { "type": "memory", "key": " Memory ", "keyColor": "34" },
+    { "type": "disk", "key": " Disk ", "keyColor": "34" },
+    { "type": "battery", "key": "󰁹 Battery ", "keyColor": "34" },
+    { "type": "break" },
+    { "type": "colors", "symbol": "circle", "block": { "range": [1, 6] } }
   ]
 }
