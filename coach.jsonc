@@ -3,17 +3,11 @@
   "logo": {
     "type": "builtin",
     "source": "Android",
-    "padding": {
-      "top": 2,
-      "right": 4
-    }
+    "padding": { "top": 2, "right": 4 }
   },
   "display": {
     "separator": " ➜ ",
-    "color": {
-      "keys": "35",
-      "title": "31"
-    }
+    "color": { "keys": "35", "title": "31" }
   },
   "modules": [
     { "type": "title", "format": "{#31}{1}@{2}" },
@@ -26,7 +20,7 @@
     { "type": "terminal", "key": "󰄛 Terminal", "keyColor": "35" },
     { "type": "break" },
     { "type": "separator", "string": "── Hardware ────────────────────────────", "color": "34" },
-    { "type": "host", "key": " Phone ", "keyColor": "34", "format": "Google Pixel 7a" },
+    { "type": "custom", "key": " Phone ", "keyColor": "34", "format": "Google Pixel 7a" },
     { "type": "display", "key": "󰍹 Display ", "keyColor": "34" },
     { "type": "cpu", "key": " Hardware ", "keyColor": "34", "format": "Google GS201" },
     { "type": "gpu", "key": "󰢮 GPU ", "keyColor": "34" },
