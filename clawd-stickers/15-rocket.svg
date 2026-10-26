@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 21" width="448" height="336" shape-rendering="crispEdges">
+<title>Clawd: ship it!</title>
+<path fill="#D97757" d="M3 0h16v4h-16zM0 1h2v4h-2zM20 1h2v4h-2zM3 4h2v1h-2zM7 4h6v1h-6zM15 4h4v1h-4zM0 5h4v1h-4zM5 5h2v1h-2zM8 5h4v1h-4zM13 5h2v1h-2zM16 5h6v1h-6zM0 6h22v2h-22zM3 8h16v4h-16zM4 12h2v3h-2zM7 12h2v2h-2zM14 12h1v1h-1zM16 12h2v2h-2z"/>
+<path fill="#1F1E1D" d="M5 4h2v1h-2zM13 4h2v1h-2zM4 5h1v1h-1zM7 5h1v1h-1zM12 5h1v1h-1zM15 5h1v1h-1z"/>
+<path fill="#D94B4B" d="M12 12h2v1h-2zM10 13h6v1h-6zM7 14h2v1h-2zM17 14h1v1h-1zM4 15h1v1h-1zM2 16h1v1h-1zM3 17h1v1h-1zM7 18h2v1h-2zM17 18h1v1h-1zM10 19h6v1h-6zM12 20h2v1h-2z"/>
+<path fill="#F0EEE6" d="M9 14h8v1h-8zM5 15h6v1h-6zM13 15h5v2h-5zM3 16h8v1h-8zM4 17h14v1h-14zM9 18h8v1h-8z"/>
+<path fill="#E3A33B" d="M20 14h1v1h-1zM20 15h2v2h-2zM20 17h1v1h-1z"/>
+<path fill="#F2C14E" d="M21 14h1v1h-1zM22 15h2v2h-2zM21 17h1v1h-1z"/>
+<path fill="#6A9BCC" d="M11 15h2v2h-2z"/>
+<path fill="#3D3D3A" d="M18 15h2v3h-2z"/>
+<path fill="#B0AEA5" d="M25 15h3v1h-3zM25 17h2v1h-2z"/>
+</svg>
