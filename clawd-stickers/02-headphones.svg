@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 20" width="432" height="320" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 20" width="464" height="320" shape-rendering="crispEdges">
 <title>Clawd в наушниках</title>
-<path fill="#2B4C7E" d="M5 0h12v1h-12zM3 1h2v1h-2zM17 1h2v1h-2zM2 2h1v3h-1zM19 2h1v3h-1zM1 5h3v1h-3zM18 5h3v1h-3zM1 6h1v3h-1zM3 6h1v3h-1zM18 6h1v3h-1zM20 6h1v3h-1zM1 9h3v1h-3zM18 9h3v1h-3z"/>
-<path fill="#1F1E1D" d="M25 0h2v1h-2zM24 1h1v2h-1zM26 1h1v1h-1zM23 3h2v2h-2zM5 8h1v1h-1zM8 8h1v1h-1zM13 8h1v1h-1zM16 8h1v1h-1zM6 9h2v1h-2zM14 9h2v1h-2z"/>
-<path fill="#D97757" d="M3 4h16v1h-16zM4 5h14v3h-14zM4 8h1v1h-1zM6 8h2v1h-2zM9 8h4v1h-4zM14 8h2v1h-2zM17 8h1v1h-1zM0 9h1v1h-1zM4 9h2v1h-2zM8 9h6v1h-6zM16 9h2v1h-2zM21 9h1v1h-1zM0 10h22v2h-22zM3 12h16v4h-16zM4 16h2v4h-2zM7 16h2v4h-2zM13 16h2v4h-2zM16 16h2v4h-2z"/>
-<path fill="#6A9BCC" d="M2 6h1v3h-1zM19 6h1v3h-1z"/>
+<path fill="#2B4C7E" d="M6 0h12v1h-12zM4 1h2v1h-2zM18 1h2v1h-2zM3 2h1v2h-1zM20 2h1v2h-1zM2 4h3v1h-3zM19 4h3v1h-3zM2 5h1v2h-1zM4 5h1v2h-1zM19 5h1v2h-1zM21 5h1v2h-1zM2 7h3v1h-3zM19 7h3v1h-3z"/>
+<path fill="#1F1E1D" d="M27 0h2v1h-2zM26 1h1v2h-1zM28 1h1v1h-1zM25 3h2v2h-2zM5 6h1v1h-1zM8 6h1v1h-1zM15 6h1v1h-1zM18 6h1v1h-1zM6 7h2v1h-2zM16 7h2v1h-2z"/>
+<path fill="#D97757" d="M5 4h14v2h-14zM6 6h2v1h-2zM9 6h6v1h-6zM16 6h2v1h-2zM5 7h1v1h-1zM8 7h8v1h-8zM18 7h1v1h-1zM0 8h24v4h-24zM4 12h16v4h-16zM4 16h2v4h-2zM8 16h2v4h-2zM14 16h2v4h-2zM18 16h2v4h-2z"/>
+<path fill="#6A9BCC" d="M3 5h1v2h-1zM20 5h1v2h-1z"/>
 </svg>

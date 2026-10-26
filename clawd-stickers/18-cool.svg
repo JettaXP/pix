@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16" width="352" height="256" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="384" height="256" shape-rendering="crispEdges">
 <title>Clawd в очках</title>
-<path fill="#D97757" d="M3 0h16v3h-16zM3 4h1v1h-1zM10 4h2v3h-2zM18 4h1v1h-1zM0 5h4v2h-4zM18 5h4v2h-4zM0 7h22v1h-22zM3 8h16v4h-16zM4 12h2v4h-2zM7 12h2v4h-2zM13 12h2v4h-2zM16 12h2v4h-2z"/>
-<path fill="#1F1E1D" d="M3 3h16v1h-16zM4 4h1v1h-1zM6 4h4v1h-4zM12 4h1v1h-1zM14 4h4v1h-4zM4 5h6v2h-6zM12 5h6v2h-6z"/>
-<path fill="#FFFFFF" d="M5 4h1v1h-1zM13 4h1v1h-1z"/>
+<path fill="#D97757" d="M4 0h16v2h-16zM10 3h4v2h-4zM0 4h4v1h-4zM20 4h4v1h-4zM0 5h5v1h-5zM9 5h6v1h-6zM19 5h5v1h-5zM0 6h24v2h-24zM4 8h16v4h-16zM4 12h2v4h-2zM8 12h2v4h-2zM14 12h2v4h-2zM18 12h2v4h-2z"/>
+<path fill="#1F1E1D" d="M4 2h16v1h-16zM4 3h1v1h-1zM6 3h4v1h-4zM14 3h1v1h-1zM16 3h4v1h-4zM4 4h6v1h-6zM14 4h6v1h-6zM5 5h4v1h-4zM15 5h4v1h-4z"/>
+<path fill="#FFFFFF" d="M5 3h1v1h-1zM15 3h1v1h-1z"/>
 </svg>

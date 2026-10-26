@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 22" width="480" height="352" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 22" width="528" height="352" shape-rendering="crispEdges">
 <title>Clawd надувает пузырь</title>
-<path fill="#A7C7E7" d="M24 0h4v1h-4zM23 1h1v1h-1zM28 1h1v1h-1zM22 2h1v4h-1zM29 2h1v4h-1zM23 6h1v1h-1zM28 6h1v1h-1zM24 7h4v1h-4zM21 9h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM21 11h1v1h-1z"/>
-<path fill="#FFFFFF" d="M26 2h2v1h-2zM27 3h1v1h-1z"/>
-<path fill="#D97757" d="M3 6h16v3h-16zM3 9h4v2h-4zM9 9h6v3h-6zM17 9h2v2h-2zM0 11h7v1h-7zM17 11h4v1h-4zM0 12h22v2h-22zM3 14h16v4h-16zM4 18h2v4h-2zM7 18h2v4h-2zM13 18h2v4h-2zM16 18h2v4h-2z"/>
-<path fill="#1F1E1D" d="M7 9h2v3h-2zM15 9h2v3h-2z"/>
+<path fill="#A7C7E7" d="M27 0h4v1h-4zM26 1h1v1h-1zM31 1h1v1h-1zM25 2h1v4h-1zM32 2h1v4h-1zM23 6h1v1h-1zM26 6h1v1h-1zM31 6h1v1h-1zM22 7h1v1h-1zM24 7h1v1h-1zM27 7h4v1h-4zM23 8h1v1h-1z"/>
+<path fill="#FFFFFF" d="M29 2h2v1h-2zM30 3h1v1h-1z"/>
+<path fill="#D97757" d="M4 6h16v2h-16zM4 8h3v2h-3zM9 8h8v2h-8zM19 8h1v2h-1zM0 10h24v4h-24zM4 14h16v4h-16zM4 18h2v4h-2zM8 18h2v4h-2zM14 18h2v4h-2zM18 18h2v4h-2z"/>
+<path fill="#1F1E1D" d="M7 8h2v2h-2zM17 8h2v2h-2z"/>
 </svg>

@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 24" width="480" height="384" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 24" width="512" height="384" shape-rendering="crispEdges">
 <title>Clawd спит</title>
-<path fill="#A7C7E7" d="M26 0h4v1h-4zM28 1h1v1h-1zM27 2h1v1h-1zM26 3h4v1h-4z"/>
-<path fill="#6A9BCC" d="M20 3h5v1h-5zM23 4h1v1h-1zM22 5h1v1h-1zM21 6h1v1h-1zM20 7h5v1h-5z"/>
-<path fill="#D97757" d="M3 8h16v4h-16zM3 12h2v1h-2zM9 12h4v1h-4zM17 12h2v1h-2zM0 13h22v3h-22zM3 16h16v4h-16zM4 20h2v4h-2zM7 20h2v4h-2zM13 20h2v4h-2zM16 20h2v4h-2z"/>
-<path fill="#1F1E1D" d="M5 12h4v1h-4zM13 12h4v1h-4z"/>
+<path fill="#A7C7E7" d="M28 0h4v1h-4zM30 1h1v1h-1zM29 2h1v1h-1zM28 3h4v1h-4z"/>
+<path fill="#6A9BCC" d="M22 3h5v1h-5zM25 4h1v1h-1zM24 5h1v1h-1zM23 6h1v1h-1zM22 7h5v1h-5z"/>
+<path fill="#D97757" d="M4 8h16v3h-16zM4 11h1v1h-1zM9 11h6v1h-6zM19 11h1v1h-1zM0 12h24v4h-24zM4 16h16v4h-16zM4 20h2v4h-2zM8 20h2v4h-2zM14 20h2v4h-2zM18 20h2v4h-2z"/>
+<path fill="#1F1E1D" d="M5 11h4v1h-4zM15 11h4v1h-4z"/>
 </svg>

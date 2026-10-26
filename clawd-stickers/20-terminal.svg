@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 27" width="480" height="432" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 27" width="512" height="432" shape-rendering="crispEdges">
 <title>Clawd в терминале</title>
-<path fill="#3D3D3A" d="M0 0h30v1h-30zM0 1h2v1h-2zM3 1h1v1h-1zM5 1h1v1h-1zM7 1h23v1h-23zM0 2h30v1h-30z"/>
+<path fill="#3D3D3A" d="M0 0h32v1h-32zM0 1h2v1h-2zM3 1h1v1h-1zM5 1h1v1h-1zM7 1h25v1h-25zM0 2h32v1h-32z"/>
 <path fill="#D94B4B" d="M2 1h1v1h-1z"/>
 <path fill="#F2C14E" d="M4 1h1v1h-1z"/>
 <path fill="#6BAA5A" d="M6 1h1v1h-1z"/>
-<path fill="#262624" d="M0 3h30v2h-30zM0 5h7v5h-7zM23 5h7v5h-7zM0 10h4v3h-4zM26 10h4v3h-4zM0 13h7v4h-7zM23 13h7v4h-7zM0 17h8v4h-8zM10 17h1v4h-1zM13 17h4v4h-4zM19 17h1v4h-1zM22 17h8v4h-8zM0 21h30v1h-30zM0 22h2v1h-2zM3 22h27v1h-27zM0 23h3v1h-3zM4 23h26v1h-26zM0 24h2v1h-2zM3 24h2v1h-2zM8 24h22v1h-22zM0 25h30v2h-30z"/>
-<path fill="#D97757" d="M7 5h16v3h-16zM7 8h3v2h-3zM12 8h6v3h-6zM20 8h3v2h-3zM4 10h6v1h-6zM20 10h6v1h-6zM4 11h22v2h-22zM7 13h16v4h-16zM8 17h2v4h-2zM11 17h2v4h-2zM17 17h2v4h-2zM20 17h2v4h-2zM2 22h1v1h-1zM3 23h1v1h-1zM2 24h1v1h-1z"/>
-<path fill="#1F1E1D" d="M10 8h2v3h-2zM18 8h2v3h-2z"/>
+<path fill="#262624" d="M0 3h32v2h-32zM0 5h8v4h-8zM24 5h8v4h-8zM0 9h4v4h-4zM28 9h4v4h-4zM0 13h8v8h-8zM24 13h8v8h-8zM10 17h2v4h-2zM14 17h4v4h-4zM20 17h2v4h-2zM0 21h32v1h-32zM0 22h2v1h-2zM3 22h29v1h-29zM0 23h3v1h-3zM4 23h28v1h-28zM0 24h2v1h-2zM3 24h2v1h-2zM8 24h24v1h-24zM0 25h32v2h-32z"/>
+<path fill="#D97757" d="M8 5h16v2h-16zM8 7h2v2h-2zM12 7h8v2h-8zM22 7h2v2h-2zM4 9h24v4h-24zM8 13h16v4h-16zM8 17h2v4h-2zM12 17h2v4h-2zM18 17h2v4h-2zM22 17h2v4h-2zM2 22h1v1h-1zM3 23h1v1h-1zM2 24h1v1h-1z"/>
+<path fill="#1F1E1D" d="M10 7h2v2h-2zM20 7h2v2h-2z"/>
 <path fill="#F0EEE6" d="M5 24h3v1h-3z"/>
 </svg>

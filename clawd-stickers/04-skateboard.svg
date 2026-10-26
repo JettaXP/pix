@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 20" width="432" height="320" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 20" width="464" height="320" shape-rendering="crispEdges">
 <title>Clawd на скейте</title>
-<path fill="#D97757" d="M8 0h16v3h-16zM5 1h2v4h-2zM8 3h4v2h-4zM14 3h6v3h-6zM22 3h2v2h-2zM5 5h7v1h-7zM22 5h5v1h-5zM5 6h22v2h-22zM8 8h16v4h-16zM9 12h2v2h-2zM12 12h2v2h-2zM18 12h2v2h-2zM21 12h2v2h-2z"/>
+<path fill="#D97757" d="M5 0h2v4h-2zM9 0h16v2h-16zM9 2h3v2h-3zM14 2h8v2h-8zM24 2h1v2h-1zM5 4h24v4h-24zM9 8h16v4h-16zM9 12h2v2h-2zM13 12h2v2h-2zM19 12h2v2h-2zM23 12h2v2h-2z"/>
+<path fill="#1F1E1D" d="M12 2h2v2h-2zM22 2h2v2h-2z"/>
 <path fill="#B0AEA5" d="M0 3h3v1h-3zM1 6h2v1h-2zM0 9h3v1h-3z"/>
-<path fill="#1F1E1D" d="M12 3h2v3h-2zM20 3h2v3h-2z"/>
-<path fill="#6B2737" d="M6 14h1v1h-1zM25 14h1v1h-1zM7 15h18v1h-18z"/>
-<path fill="#E3A33B" d="M10 16h2v1h-2zM20 16h2v1h-2zM9 17h1v2h-1zM12 17h1v2h-1zM19 17h1v2h-1zM22 17h1v2h-1zM10 19h2v1h-2zM20 19h2v1h-2z"/>
-<path fill="#F2C14E" d="M10 17h2v2h-2zM20 17h2v2h-2z"/>
+<path fill="#6B2737" d="M6 14h1v1h-1zM27 14h1v1h-1zM7 15h20v1h-20z"/>
+<path fill="#E3A33B" d="M10 16h2v1h-2zM22 16h2v1h-2zM9 17h1v2h-1zM12 17h1v2h-1zM21 17h1v2h-1zM24 17h1v2h-1zM10 19h2v1h-2zM22 19h2v1h-2z"/>
+<path fill="#F2C14E" d="M10 17h2v2h-2zM22 17h2v2h-2z"/>
 </svg>

@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16" width="352" height="256" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="384" height="256" shape-rendering="crispEdges">
 <title>Clawd &gt; &lt;</title>
-<path fill="#D97757" d="M3 0h16v2h-16zM3 2h3v1h-3zM7 2h9v1h-9zM17 2h2v1h-2zM3 3h4v1h-4zM8 3h7v1h-7zM16 3h3v1h-3zM3 4h5v1h-5zM9 4h5v1h-5zM15 4h4v1h-4zM0 5h7v1h-7zM8 5h7v1h-7zM16 5h6v1h-6zM0 6h6v1h-6zM7 6h9v1h-9zM17 6h5v1h-5zM0 7h22v1h-22zM3 8h16v4h-16zM4 12h2v4h-2zM7 12h2v4h-2zM13 12h2v4h-2zM16 12h2v4h-2z"/>
-<path fill="#1F1E1D" d="M6 2h1v1h-1zM16 2h1v1h-1zM7 3h1v1h-1zM15 3h1v1h-1zM8 4h1v1h-1zM14 4h1v1h-1zM7 5h1v1h-1zM15 5h1v1h-1zM6 6h1v1h-1zM16 6h1v1h-1z"/>
+<path fill="#D97757" d="M4 0h16v1h-16zM4 1h1v1h-1zM6 1h12v1h-12zM19 1h1v1h-1zM4 2h2v1h-2zM7 2h10v1h-10zM18 2h2v1h-2zM4 3h3v1h-3zM8 3h8v1h-8zM17 3h3v1h-3zM0 4h6v1h-6zM7 4h10v1h-10zM18 4h6v1h-6zM0 5h5v1h-5zM6 5h12v1h-12zM19 5h5v1h-5zM0 6h24v2h-24zM4 8h16v4h-16zM4 12h2v4h-2zM8 12h2v4h-2zM14 12h2v4h-2zM18 12h2v4h-2z"/>
+<path fill="#1F1E1D" d="M5 1h1v1h-1zM18 1h1v1h-1zM6 2h1v1h-1zM17 2h1v1h-1zM7 3h1v1h-1zM16 3h1v1h-1zM6 4h1v1h-1zM17 4h1v1h-1zM5 5h1v1h-1zM18 5h1v1h-1z"/>
 </svg>

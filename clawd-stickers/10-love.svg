@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 21" width="400" height="336" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 22" width="432" height="352" shape-rendering="crispEdges">
 <title>Clawd с сердечком</title>
 <path fill="#D94B4B" d="M1 0h2v1h-2zM4 0h2v1h-2zM0 1h1v1h-1zM2 1h5v1h-5zM0 2h7v1h-7zM1 3h5v1h-5zM2 4h3v1h-3zM3 5h1v1h-1z"/>
 <path fill="#E88BA4" d="M1 1h1v1h-1z"/>
-<path fill="#D97757" d="M6 5h16v3h-16zM3 6h2v4h-2zM6 8h2v2h-2zM10 8h6v3h-6zM18 8h4v2h-4zM3 10h5v1h-5zM18 10h7v1h-7zM3 11h22v2h-22zM6 13h16v4h-16zM7 17h2v4h-2zM10 17h2v4h-2zM16 17h2v4h-2zM19 17h2v4h-2z"/>
-<path fill="#1F1E1D" d="M8 8h2v3h-2zM16 8h2v3h-2z"/>
+<path fill="#D97757" d="M3 6h2v4h-2zM7 6h16v2h-16zM7 8h1v2h-1zM10 8h8v2h-8zM20 8h3v2h-3zM3 10h24v4h-24zM7 14h16v4h-16zM7 18h2v4h-2zM11 18h2v4h-2zM17 18h2v4h-2zM21 18h2v4h-2z"/>
+<path fill="#1F1E1D" d="M8 8h2v2h-2zM18 8h2v2h-2z"/>
 </svg>

@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 25" width="464" height="400" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 26" width="480" height="416" shape-rendering="crispEdges">
 <title>Clawd думает</title>
-<path fill="#B0AEA5" d="M20 0h7v1h-7zM19 1h1v1h-1zM27 1h1v1h-1zM18 2h1v3h-1zM28 2h1v3h-1zM19 5h1v1h-1zM27 5h1v1h-1zM20 6h7v1h-7zM20 7h1v1h-1zM19 8h1v1h-1z"/>
-<path fill="#FFFFFF" d="M20 1h7v1h-7zM19 2h9v1h-9zM19 3h2v1h-2zM22 3h1v1h-1zM24 3h1v1h-1zM26 3h2v1h-2zM19 4h9v1h-9zM20 5h7v1h-7z"/>
-<path fill="#1F1E1D" d="M21 3h1v1h-1zM23 3h1v1h-1zM25 3h1v1h-1zM7 12h2v3h-2zM15 12h2v3h-2z"/>
-<path fill="#D97757" d="M3 9h16v3h-16zM3 12h4v2h-4zM9 12h6v3h-6zM17 12h2v2h-2zM0 14h7v1h-7zM17 14h5v1h-5zM0 15h22v2h-22zM3 17h16v4h-16zM4 21h2v4h-2zM7 21h2v4h-2zM13 21h2v4h-2zM16 21h2v4h-2z"/>
+<path fill="#B0AEA5" d="M21 0h7v1h-7zM20 1h1v1h-1zM28 1h1v1h-1zM19 2h1v3h-1zM29 2h1v3h-1zM20 5h1v1h-1zM28 5h1v1h-1zM21 6h7v1h-7zM20 7h1v1h-1zM19 8h1v1h-1z"/>
+<path fill="#FFFFFF" d="M21 1h7v1h-7zM20 2h9v1h-9zM20 3h2v1h-2zM23 3h1v1h-1zM25 3h1v1h-1zM27 3h2v1h-2zM20 4h9v1h-9zM21 5h7v1h-7z"/>
+<path fill="#1F1E1D" d="M22 3h1v1h-1zM24 3h1v1h-1zM26 3h1v1h-1zM7 12h2v2h-2zM17 12h2v2h-2z"/>
+<path fill="#D97757" d="M4 10h16v2h-16zM4 12h3v2h-3zM9 12h8v2h-8zM19 12h1v2h-1zM0 14h24v4h-24zM4 18h16v4h-16zM4 22h2v4h-2zM8 22h2v4h-2zM14 22h2v4h-2zM18 22h2v4h-2z"/>
 </svg>

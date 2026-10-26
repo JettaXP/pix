@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 20" width="496" height="320" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 20" width="528" height="320" shape-rendering="crispEdges">
 <title>Clawd нашёл баг</title>
-<path fill="#D94B4B" d="M22 0h1v2h-1zM22 3h1v1h-1z"/>
-<path fill="#D97757" d="M3 4h16v3h-16zM3 7h4v2h-4zM9 7h6v3h-6zM17 7h2v3h-2zM0 9h7v1h-7zM0 10h24v1h-24zM0 11h23v1h-23zM24 11h1v1h-1zM3 12h22v1h-22zM3 13h16v3h-16zM4 16h2v4h-2zM7 16h2v4h-2zM13 16h2v4h-2zM16 16h2v4h-2z"/>
-<path fill="#3D3D3A" d="M26 5h4v1h-4zM25 6h1v3h-1zM30 6h1v3h-1zM26 9h4v1h-4z"/>
-<path fill="#A7C7E7" d="M26 6h4v1h-4zM26 7h3v1h-3zM26 8h4v1h-4z"/>
-<path fill="#1F1E1D" d="M7 7h2v3h-2zM15 7h2v3h-2zM26 14h1v1h-1zM30 14h1v1h-1zM27 15h1v1h-1zM29 15h1v1h-1zM26 16h1v1h-1zM30 16h1v1h-1zM28 17h1v1h-1zM26 18h1v1h-1zM30 18h1v1h-1z"/>
-<path fill="#FFFFFF" d="M29 7h1v1h-1z"/>
-<path fill="#8A5A3B" d="M24 10h2v1h-2zM23 11h1v1h-1z"/>
-<path fill="#6BAA5A" d="M27 16h3v1h-3zM27 17h1v1h-1zM29 17h1v1h-1zM27 18h3v1h-3z"/>
+<path fill="#D94B4B" d="M23 0h1v2h-1zM23 3h1v1h-1z"/>
+<path fill="#3D3D3A" d="M28 3h4v1h-4zM27 4h1v3h-1zM32 4h1v3h-1zM28 7h4v1h-4z"/>
+<path fill="#D97757" d="M4 4h16v2h-16zM4 6h3v2h-3zM9 6h8v2h-8zM19 6h1v2h-1zM0 8h26v4h-26zM4 12h16v4h-16zM4 16h2v4h-2zM8 16h2v4h-2zM14 16h2v4h-2zM18 16h2v4h-2z"/>
+<path fill="#A7C7E7" d="M28 4h4v1h-4zM28 5h3v1h-3zM28 6h4v1h-4z"/>
+<path fill="#FFFFFF" d="M31 5h1v1h-1z"/>
+<path fill="#1F1E1D" d="M7 6h2v2h-2zM17 6h2v2h-2zM27 14h1v1h-1zM31 14h1v1h-1zM28 15h1v1h-1zM30 15h1v1h-1zM27 16h1v1h-1zM31 16h1v1h-1zM29 17h1v1h-1zM27 18h1v1h-1zM31 18h1v1h-1z"/>
+<path fill="#8A5A3B" d="M27 7h1v1h-1zM26 8h1v1h-1z"/>
+<path fill="#6BAA5A" d="M28 16h3v1h-3zM28 17h1v1h-1zM30 17h1v1h-1zM28 18h3v1h-3z"/>
 </svg>

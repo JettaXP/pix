@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 18" width="432" height="288" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 19" width="464" height="304" shape-rendering="crispEdges">
 <title>Clawd машет</title>
-<path fill="#B0AEA5" d="M25 0h1v1h-1zM26 1h1v4h-1zM23 2h1v1h-1zM24 3h1v2h-1zM23 5h1v1h-1zM25 5h1v1h-1z"/>
-<path fill="#D97757" d="M3 2h16v4h-16zM20 3h2v4h-2zM3 6h3v1h-3zM8 6h6v1h-6zM16 6h3v1h-3zM0 7h5v1h-5zM6 7h2v1h-2zM9 7h4v1h-4zM14 7h2v1h-2zM17 7h5v1h-5zM0 8h22v2h-22zM3 10h16v4h-16zM4 14h2v4h-2zM7 14h2v4h-2zM13 14h2v4h-2zM16 14h2v4h-2z"/>
-<path fill="#1F1E1D" d="M6 6h2v1h-2zM14 6h2v1h-2zM5 7h1v1h-1zM8 7h1v1h-1zM13 7h1v1h-1zM16 7h1v1h-1z"/>
+<path fill="#B0AEA5" d="M27 0h1v1h-1zM28 1h1v4h-1zM25 2h1v1h-1zM26 3h1v2h-1zM25 5h1v1h-1zM27 5h1v1h-1z"/>
+<path fill="#D97757" d="M4 3h16v2h-16zM22 3h2v4h-2zM4 5h2v1h-2zM8 5h8v1h-8zM18 5h2v1h-2zM4 6h1v1h-1zM6 6h2v1h-2zM9 6h6v1h-6zM16 6h2v1h-2zM19 6h1v1h-1zM0 7h24v4h-24zM4 11h16v4h-16zM4 15h2v4h-2zM8 15h2v4h-2zM14 15h2v4h-2zM18 15h2v4h-2z"/>
+<path fill="#1F1E1D" d="M6 5h2v1h-2zM16 5h2v1h-2zM5 6h1v1h-1zM8 6h1v1h-1zM15 6h1v1h-1zM18 6h1v1h-1z"/>
 </svg>

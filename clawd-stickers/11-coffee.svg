@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 18" width="528" height="288" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 19" width="544" height="304" shape-rendering="crispEdges">
 <title>Clawd с кофе</title>
-<path fill="#B0AEA5" d="M26 0h1v1h-1zM27 1h1v1h-1zM29 1h1v1h-1zM26 2h1v1h-1zM30 2h1v1h-1zM29 3h1v1h-1z"/>
-<path fill="#D97757" d="M3 2h16v4h-16zM3 6h2v1h-2zM6 6h2v1h-2zM9 6h4v1h-4zM14 6h2v1h-2zM17 6h2v1h-2zM0 7h6v1h-6zM8 7h6v1h-6zM16 7h3v1h-3zM25 7h6v1h-6zM0 8h25v2h-25zM3 10h22v1h-22zM3 11h16v3h-16zM4 14h2v4h-2zM7 14h2v4h-2zM13 14h2v4h-2zM16 14h2v4h-2z"/>
-<path fill="#8A5A3B" d="M25 5h6v1h-6z"/>
-<path fill="#1F1E1D" d="M5 6h1v1h-1zM8 6h1v1h-1zM13 6h1v1h-1zM16 6h1v1h-1zM6 7h2v1h-2zM14 7h2v1h-2z"/>
-<path fill="#F0EEE6" d="M25 6h8v1h-8zM32 7h1v2h-1zM25 8h6v1h-6zM25 9h8v1h-8zM25 10h6v1h-6zM26 11h4v1h-4z"/>
+<path fill="#B0AEA5" d="M27 0h1v1h-1zM28 1h1v1h-1zM30 1h1v1h-1zM27 2h1v1h-1zM31 2h1v1h-1zM30 3h1v1h-1z"/>
+<path fill="#D97757" d="M4 3h16v2h-16zM4 5h1v1h-1zM6 5h2v1h-2zM9 5h6v1h-6zM16 5h2v1h-2zM19 5h1v1h-1zM4 6h2v1h-2zM8 6h8v1h-8zM18 6h2v1h-2zM0 7h32v1h-32zM0 8h26v3h-26zM4 11h16v4h-16zM4 15h2v4h-2zM8 15h2v4h-2zM14 15h2v4h-2zM18 15h2v4h-2z"/>
+<path fill="#1F1E1D" d="M5 5h1v1h-1zM8 5h1v1h-1zM15 5h1v1h-1zM18 5h1v1h-1zM6 6h2v1h-2zM16 6h2v1h-2z"/>
+<path fill="#8A5A3B" d="M26 5h6v1h-6z"/>
+<path fill="#F0EEE6" d="M26 6h8v1h-8zM33 7h1v2h-1zM26 8h6v1h-6zM26 9h8v1h-8zM26 10h6v1h-6zM27 11h4v1h-4z"/>
 </svg>
