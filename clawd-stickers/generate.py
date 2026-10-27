@@ -456,27 +456,32 @@ def s_terminal(cv):
     cv.rect(5, 24, 3, 1, CREAM)
 
 
-@sticker("21-pixel7", "Clawd хвастается Pixel 7")
-def s_pixel7(cv):
-    clawd(cv, 4, 10, eyes="smile", arm_r="up")
-    # Pixel 7 задней крышкой к зрителю: белый корпус и фирменный «визор» с камерами
+@sticker("21-pixel7a", "Clawd фоткает на Pixel 7a")
+def s_pixel7a(cv):
+    ox, oy = 4, 4
+    clawd(cv, ox, oy, eyes=None)
+    cv.rect(ox + 1, oy + 2, 4, 1, INK)            # левый глаз прищурен
+    cv.rect(ox + 12, oy + 1, 2, 2, INK)           # правый целится
+    # Pixel 7a (Sea) горизонтально, камерой к зрителю; ручки держат его за края
     phone = [
-        ".ffffffff.",
-        "fbbbbbbbbf",
-        "fbbbbbbbbf",
-        "ssssssssss",
-        "skkkkkkkss",
-        "skowkowkys",
-        "skookookss",
-        "ssssssssss",
-    ] + ["fbbbbbbbbf"] * 12 + [".ffffffff."]
-    cv.stamp(24, 0, phone, {
-        "f": GRAY, "b": "#EDEBE4", "s": "#C7CACD", "k": INK,
-        "o": STEEL, "w": BLUE, "y": "#F5E6B0",
+        ".ffffffffffffff.",
+        "fbbbbbbbbbvkkkvf",
+        "fbbbbbbbbbvkokvf",
+        "fbbbbbbbbbvkkkvf",
+        "fbbbbbbbbbvkokvf",
+        "fbbbbbbbbbvkkkvf",
+        "fbbbbbbbbbvvvyvf",
+        ".ffffffffffffff.",
+    ]
+    cv.stamp(ox, oy + 4, phone, {
+        "f": "#7F9DBE", "b": "#BFD3E8", "v": "#A3BBD6", "k": INK,
+        "o": "#5E7A99", "y": "#FFF4C2",
     })
-    cv.rect(24, 11, 2, 3, ORANGE)                 # пальцы обхватывают корпус
-    for x, y in ((36, 2), (36, 14), (19, 3)):     # блеск
-        cv.stamp(x, y, [".#.", "###", ".#."], {"#": YELLOW})
+    # вспышка
+    cv.stamp(22, 0, ["..#..", "..#..", "##w##", "..#..", "..#.."],
+             {"#": YELLOW, "w": WHITE})
+    for x, y in ((27, 5), (28, 6), (28, 0), (29, 0)):
+        cv.set(x, y, YELLOW)
 
 
 def main():

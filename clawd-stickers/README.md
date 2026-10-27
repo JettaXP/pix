@@ -27,4 +27,4 @@
 | <img src="18-cool.svg" height="64"> | `18-cool.svg` | Clawd в очках |
 | <img src="19-error.svg" height="64"> | `19-error.svg` | Clawd: что-то пошло не так |
 | <img src="20-terminal.svg" height="64"> | `20-terminal.svg` | Clawd в терминале |
-| <img src="21-pixel7.svg" height="64"> | `21-pixel7.svg` | Clawd хвастается Pixel 7 |
+| <img src="21-pixel7a.svg" height="64"> | `21-pixel7a.svg` | Clawd фоткает на Pixel 7a |
