@@ -1,14 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 22" width="384" height="352" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 27" width="656" height="432" shape-rendering="crispEdges">
 <title>Clawd фоткает на Pixel 7a</title>
-<path fill="#F2C14E" d="M3 0h1v2h-1zM1 2h2v1h-2zM4 2h2v1h-2zM3 3h1v2h-1zM6 4h1v1h-1zM5 5h1v1h-1zM0 7h1v2h-1z"/>
-<path fill="#FFFFFF" d="M3 2h1v1h-1z"/>
-<path fill="#8FB0CB" d="M9 2h6v1h-6zM8 3h1v1h-1zM15 3h1v1h-1zM8 9h1v3h-1zM15 9h1v3h-1zM8 14h1v3h-1zM15 14h1v3h-1zM9 17h6v1h-6z"/>
-<path fill="#D3E5F1" d="M9 3h6v1h-6zM9 9h6v2h-6zM9 11h3v1h-3zM14 11h1v1h-1zM9 12h2v2h-2zM12 12h3v1h-3zM12 13h1v1h-1zM14 13h1v2h-1zM9 14h3v1h-3zM9 15h6v2h-6z"/>
-<path fill="#B9CFE0" d="M8 4h8v1h-8zM8 5h1v3h-1zM14 5h2v1h-2zM15 6h1v1h-1zM14 7h2v1h-2z"/>
-<path fill="#1F1E1D" d="M9 5h5v1h-5zM9 6h1v1h-1zM11 6h1v1h-1zM13 6h1v1h-1zM9 7h5v1h-5zM17 8h2v2h-2zM5 9h2v1h-2z"/>
-<path fill="#D97757" d="M4 6h4v3h-4zM16 6h4v2h-4zM16 8h1v2h-1zM19 8h1v2h-1zM4 9h1v1h-1zM7 9h1v1h-1zM0 10h8v2h-8zM16 10h8v2h-8zM0 12h9v2h-9zM15 12h9v2h-9zM4 14h4v3h-4zM16 14h4v3h-4zM4 17h5v1h-5zM15 17h5v1h-5zM4 18h2v4h-2zM8 18h2v4h-2zM14 18h2v4h-2zM18 18h2v4h-2z"/>
-<path fill="#3E5266" d="M10 6h1v1h-1zM12 6h1v1h-1z"/>
-<path fill="#F7F5EC" d="M14 6h1v1h-1z"/>
-<path fill="#9EB7CC" d="M8 8h8v1h-8z"/>
-<path fill="#A3B1BD" d="M12 11h2v1h-2zM11 12h1v2h-1zM13 13h1v1h-1zM12 14h2v1h-2z"/>
+<path fill="#F2C14E" d="M34 0h1v2h-1zM40 0h1v1h-1zM39 1h1v1h-1zM33 2h1v1h-1zM35 2h1v1h-1zM31 3h2v1h-2zM36 3h2v1h-2zM33 4h1v1h-1zM35 4h1v1h-1zM34 5h1v2h-1zM30 8h1v1h-1zM29 9h1v1h-1z"/>
+<path fill="#FFFFFF" d="M34 2h1v1h-1zM33 3h3v1h-3zM34 4h1v1h-1z"/>
+<path fill="#D97757" d="M6 3h24v2h-24zM6 5h18v2h-18zM27 5h3v3h-3zM6 7h3v1h-3zM12 7h12v1h-12zM6 8h24v1h-24zM0 9h5v1h-5zM31 9h5v1h-5zM0 10h4v5h-4zM32 10h4v5h-4zM6 23h3v4h-3zM12 23h3v4h-3zM21 23h3v4h-3zM27 23h3v4h-3z"/>
+<path fill="#1F1E1D" d="M24 5h3v3h-3zM9 7h3v1h-3zM23 10h4v1h-4zM22 11h2v1h-2zM26 11h2v1h-2zM22 12h1v2h-1zM27 12h1v2h-1zM22 14h2v2h-2zM26 14h2v2h-2zM22 16h1v2h-1zM27 16h1v2h-1zM22 18h2v1h-2zM26 18h2v1h-2zM23 19h4v1h-4z"/>
+<path fill="#8FB0CB" d="M5 9h15v1h-15zM30 9h1v1h-1zM4 10h1v12h-1zM31 10h1v12h-1zM5 22h15v1h-15zM30 22h1v1h-1z"/>
+<path fill="#9EB7CC" d="M20 9h1v14h-1zM29 10h1v13h-1z"/>
+<path fill="#B9CFE0" d="M21 9h8v1h-8zM21 10h2v1h-2zM27 10h2v1h-2zM21 11h1v8h-1zM28 11h1v8h-1zM21 19h2v1h-2zM27 19h2v1h-2zM21 20h3v2h-3zM26 20h3v2h-3zM21 22h8v1h-8z"/>
+<path fill="#D3E5F1" d="M5 10h15v12h-15zM30 10h1v12h-1z"/>
+<path fill="#4A5D70" d="M24 11h2v1h-2zM23 12h1v2h-1zM26 12h1v2h-1zM24 14h2v2h-2zM23 16h1v2h-1zM26 16h1v2h-1zM24 18h2v1h-2z"/>
+<path fill="#16202A" d="M24 12h1v1h-1zM24 13h2v1h-2zM24 16h1v1h-1zM24 17h2v1h-2z"/>
+<path fill="#9FC3E0" d="M25 12h1v1h-1zM25 16h1v1h-1z"/>
+<path fill="#F7F5EC" d="M24 20h2v2h-2z"/>
 </svg>

@@ -458,40 +458,56 @@ def s_terminal(cv):
 
 @sticker("21-pixel7a", "Clawd фоткает на Pixel 7a")
 def s_pixel7a(cv):
-    ox, oy = 4, 6
-    clawd(cv, ox, oy, eyes=None)
-    cv.rect(ox + 1, oy + 3, 2, 1, INK)            # левый глаз прищурен
-    cv.rect(ox + 13, oy + 2, 2, 2, INK)           # правый выглядывает
-    # Pixel 7a (Sea) вертикально, задней крышкой к зрителю:
-    # визор во всю ширину, слева «таблетка» с двумя камерами, справа вспышка
-    phone = [
-        ".ffffff.",
-        "fbbbbbbf",
-        "vvvvvvvv",
-        "vkkkkkvv",
-        "vkokokLv",
-        "vkkkkkvv",
-        "ssssssss",
-        "fbbbbbbf",
-        "fbbbbbbf",
-        "fbbbggbf",
-        "fbbgbbbf",
-        "fbbgbgbf",
-        "fbbbggbf",
-        "fbbbbbbf",
-        "fbbbbbbf",
-        ".ffffff.",
+    # Clawd здесь крупнее: классические 8x8 в масштабе x3
+    tx, ty, k = 0, 3, 3
+    clawd8 = [
+        "..########..",
+        "..########..",
+        "############",
+        "############",
+        "..########..",
+        "..########..",
+        "..#.#..#.#..",
+        "..#.#..#.#..",
     ]
-    cv.stamp(ox + 4, oy - 4, phone, {
-        "f": "#8FB0CB", "b": "#D3E5F1", "v": "#B9CFE0", "s": "#9EB7CC",
-        "k": INK, "o": "#3E5266", "L": "#F7F5EC", "g": "#A3B1BD",
-    })
-    for x in (ox + 4, ox + 11):                   # пальцы держат корпус
-        cv.rect(x, oy + 6, 1, 2, ORANGE)
-    # вспышка
-    cv.stamp(1, 0, ["..#..", "..#..", "##w##", "..#..", "..#.."],
+    for r, row in enumerate(clawd8):
+        for c, ch in enumerate(row):
+            if ch == "#":
+                cv.rect(tx + c * k, ty + r * k, k, k, ORANGE)
+    ox, oy = tx + 2 * k, ty                       # левый верхний угол тела
+    cv.rect(ox + 3, oy + 4, 3, 1, INK)            # левый глаз прищурен
+    cv.rect(ox + 18, oy + 2, 3, 3, INK)           # правый целится
+
+    # Pixel 7a (Sea) горизонтально, задней крышкой к зрителю. Повёрнут так,
+    # что визор — вертикальная полоса справа, камеры одна над другой,
+    # вспышка под ними.
+    F, B = "#8FB0CB", "#D3E5F1"
+    V, S = "#B9CFE0", "#9EB7CC"
+    pw, ph = 28, 14
+    px, py = ox - 2, oy + 6
+    under = {c: cv.px.get(c) for c in ((px, py), (px + pw - 1, py),
+             (px, py + ph - 1), (px + pw - 1, py + ph - 1))}
+    cv.rect(px, py, pw, ph, F)
+    cv.rect(px + 1, py + 1, pw - 2, ph - 2, B)
+    cv.rect(px + 16, py, 10, ph, V)               # визор
+    cv.rect(px + 16, py, 1, ph, S)
+    cv.rect(px + 25, py, 1, ph, S)
+    cv.rect(px + 18, py + 1, 6, 10, INK)          # «таблетка»
+    for x, y in ((18, 1), (23, 1), (18, 10), (23, 10)):
+        cv.set(px + x, py + y, V)
+    lens = [".oo.", "ocwo", "occo", ".oo."]
+    for y in (2, 6):
+        cv.stamp(px + 19, py + y, lens,
+                 {"o": "#4A5D70", "c": "#16202A", "w": "#9FC3E0"})
+    cv.rect(px + 20, py + 11, 2, 2, "#F7F5EC")    # вспышка
+    for xy, c in under.items():                   # скруглённые углы
+        cv.set(*xy, c)
+
+    # блик вспышки
+    cv.stamp(ox + 25, 0, ["...#...", "...#...", "..#w#..", "##www##",
+                          "..#w#..", "...#...", "...#..."],
              {"#": YELLOW, "w": WHITE})
-    for x, y in ((6, 4), (5, 5), (0, 7), (0, 8)):
+    for x, y in ((ox + 24, 8), (ox + 23, 9), (ox + 33, 1), (ox + 34, 0)):
         cv.set(x, y, YELLOW)
 
 
