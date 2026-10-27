@@ -178,11 +178,9 @@ def s_headphones(cv):
     cv.stamp(25, 0, note, {"#": INK})
 
 
-@sticker("03-laptop", "Clawd пишет код")
-def s_laptop(cv):
-    clawd(cv, 4, 4, look=1, arm_r=None)
-    # ноутбук: экран к зрителю, Clawd печатает сбоку
-    sx, sy = 27, 0
+def laptop(cv, ox, oy):
+    """Ноутбук экраном к зрителю справа от Clawd (ox, oy) и рука на клавиатуре."""
+    sx, sy = ox + 23, oy - 4
     cv.rect(sx, sy, 15, 12, STEEL)                # рамка
     cv.rect(sx + 1, sy + 1, 13, 10, "#262624")    # экран
     code = [
@@ -199,8 +197,14 @@ def s_laptop(cv):
     for kx in range(sx - 3, sx + 15, 2):
         cv.set(kx, sy + 12, DGRAY)
     # рука тянется к клавиатуре
-    cv.rect(20, 8, 4, 4, ORANGE)
-    cv.rect(24, 10, 2, 3, ORANGE)
+    cv.rect(ox + 16, oy + 4, 4, 4, ORANGE)
+    cv.rect(ox + 20, oy + 6, 2, 3, ORANGE)
+
+
+@sticker("03-laptop", "Clawd пишет код")
+def s_laptop(cv):
+    clawd(cv, 4, 4, look=1, arm_r=None)
+    laptop(cv, 4, 4)
     cv.set(25, 7, YELLOW)                         # «искры» набора
     cv.set(24, 5, YELLOW)
 
@@ -508,6 +512,66 @@ def s_pixel7a(cv):
                           "..#w#..", "...#...", "...#..."],
              {"#": YELLOW, "w": WHITE})
     for x, y in ((ox + 24, 8), (ox + 23, 9), (ox + 33, 1), (ox + 34, 0)):
+        cv.set(x, y, YELLOW)
+
+
+@sticker("22-night-coding", "Clawd кодит ночью")
+def s_night(cv):
+    ox, oy = 8, 9
+    clawd(cv, ox, oy, eyes=None, arm_l="long", arm_r=None)
+    cv.rect(ox + 3, oy + 3, 2, 1, INK)            # сонные глаза
+    cv.rect(ox + 13, oy + 3, 2, 1, INK)
+    laptop(cv, ox, oy)
+    # кружка в левой руке
+    mug = [
+        "bbbbbb..",
+        "cccccc##",
+        "oooooo.#",
+        "cccccc.#",
+        "cccccc##",
+        "cccccc..",
+        ".cccc...",
+    ]
+    cv.stamp(ox - 13, oy + 3, mug, {"b": BROWN, "c": CREAM, "o": ORANGE, "#": CREAM})
+    for x, y in ((-4, 9), (-3, 8), (-4, 7), (-1, 10), (0, 9), (-1, 8)):  # пар
+        cv.set(x, y, GRAY)
+    # луна и звёзды
+    moon = ["..###.", ".##...", "##....", "##....", ".##...", "..###."]
+    cv.stamp(-5, -1, moon, {"#": "#F2E6B0"})
+    for x, y in ((5, 0), (12, 3), (20, 0), (26, 1)):
+        cv.set(x, y, YELLOW)
+    cv.stamp(15, -1, [".#.", "#w#", ".#."], {"#": YELLOW, "w": WHITE})
+
+
+@sticker("23-gamepad", "Clawd играет")
+def s_gamepad(cv):
+    ox, oy = 4, 5
+    clawd(cv, ox, oy, look=0)
+    # геймпад держит обеими ручками
+    G, D = "#4A4A55", "#2E2E35"
+    gx, gy = ox - 3, oy + 5
+    pad = [
+        "..gggggggggggggggggg..",
+        ".gggggggggggggggggggg.",
+        "gggggggggggggggggggggg",
+        "gggggggggggggggggggggg",
+        "gggggggggggggggggggggg",
+        "gggggggggggggggggggggg",
+        "gggggg..........gggggg",
+        ".gggg............gggg.",
+    ]
+    cv.stamp(gx, gy, pad, {"g": G})
+    # крестовина
+    cv.stamp(gx + 2, gy + 1, ["..##..", "..##..", "######", "######",
+                              "..##..", "..##.."], {"#": INK})
+    # кнопки ABXY
+    for x, y, c in ((16, 1, GREEN), (13, 3, BLUE), (19, 3, RED), (16, 5, YELLOW)):
+        cv.rect(gx + x, gy + y, 2, 2, c)
+    # start / select
+    cv.rect(gx + 7, gy + 5, 2, 1, D)
+    cv.rect(gx + 10, gy + 5, 2, 1, D)
+    # азарт
+    for x, y in ((ox - 4, 0), (ox - 2, 2), (ox + 19, 0), (ox + 17, 2)):
         cv.set(x, y, YELLOW)
 
 
