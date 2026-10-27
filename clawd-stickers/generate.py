@@ -458,29 +458,40 @@ def s_terminal(cv):
 
 @sticker("21-pixel7a", "Clawd фоткает на Pixel 7a")
 def s_pixel7a(cv):
-    ox, oy = 4, 4
+    ox, oy = 4, 6
     clawd(cv, ox, oy, eyes=None)
-    cv.rect(ox + 1, oy + 2, 4, 1, INK)            # левый глаз прищурен
-    cv.rect(ox + 12, oy + 1, 2, 2, INK)           # правый целится
-    # Pixel 7a (Sea) горизонтально, камерой к зрителю; ручки держат его за края
+    cv.rect(ox + 1, oy + 3, 2, 1, INK)            # левый глаз прищурен
+    cv.rect(ox + 13, oy + 2, 2, 2, INK)           # правый выглядывает
+    # Pixel 7a (Sea) вертикально, задней крышкой к зрителю:
+    # визор во всю ширину, слева «таблетка» с двумя камерами, справа вспышка
     phone = [
-        ".ffffffffffffff.",
-        "fbbbbbbbbbvkkkvf",
-        "fbbbbbbbbbvkokvf",
-        "fbbbbbbbbbvkkkvf",
-        "fbbbbbbbbbvkokvf",
-        "fbbbbbbbbbvkkkvf",
-        "fbbbbbbbbbvvvyvf",
-        ".ffffffffffffff.",
+        ".ffffff.",
+        "fbbbbbbf",
+        "vvvvvvvv",
+        "vkkkkkvv",
+        "vkokokLv",
+        "vkkkkkvv",
+        "ssssssss",
+        "fbbbbbbf",
+        "fbbbbbbf",
+        "fbbbggbf",
+        "fbbgbbbf",
+        "fbbgbgbf",
+        "fbbbggbf",
+        "fbbbbbbf",
+        "fbbbbbbf",
+        ".ffffff.",
     ]
-    cv.stamp(ox, oy + 4, phone, {
-        "f": "#7F9DBE", "b": "#BFD3E8", "v": "#A3BBD6", "k": INK,
-        "o": "#5E7A99", "y": "#FFF4C2",
+    cv.stamp(ox + 4, oy - 4, phone, {
+        "f": "#8FB0CB", "b": "#D3E5F1", "v": "#B9CFE0", "s": "#9EB7CC",
+        "k": INK, "o": "#3E5266", "L": "#F7F5EC", "g": "#A3B1BD",
     })
+    for x in (ox + 4, ox + 11):                   # пальцы держат корпус
+        cv.rect(x, oy + 6, 1, 2, ORANGE)
     # вспышка
-    cv.stamp(22, 0, ["..#..", "..#..", "##w##", "..#..", "..#.."],
+    cv.stamp(1, 0, ["..#..", "..#..", "##w##", "..#..", "..#.."],
              {"#": YELLOW, "w": WHITE})
-    for x, y in ((27, 5), (28, 6), (28, 0), (29, 0)):
+    for x, y in ((6, 4), (5, 5), (0, 7), (0, 8)):
         cv.set(x, y, YELLOW)
 
 
