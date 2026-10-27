@@ -456,6 +456,29 @@ def s_terminal(cv):
     cv.rect(5, 24, 3, 1, CREAM)
 
 
+@sticker("21-pixel7", "Clawd хвастается Pixel 7")
+def s_pixel7(cv):
+    clawd(cv, 4, 10, eyes="smile", arm_r="up")
+    # Pixel 7 задней крышкой к зрителю: белый корпус и фирменный «визор» с камерами
+    phone = [
+        ".ffffffff.",
+        "fbbbbbbbbf",
+        "fbbbbbbbbf",
+        "ssssssssss",
+        "skkkkkkkss",
+        "skowkowkys",
+        "skookookss",
+        "ssssssssss",
+    ] + ["fbbbbbbbbf"] * 12 + [".ffffffff."]
+    cv.stamp(24, 0, phone, {
+        "f": GRAY, "b": "#EDEBE4", "s": "#C7CACD", "k": INK,
+        "o": STEEL, "w": BLUE, "y": "#F5E6B0",
+    })
+    cv.rect(24, 11, 2, 3, ORANGE)                 # пальцы обхватывают корпус
+    for x, y in ((36, 2), (36, 14), (19, 3)):     # блеск
+        cv.stamp(x, y, [".#.", "###", ".#."], {"#": YELLOW})
+
+
 def main():
     out = Path(__file__).resolve().parent
     for name, (title, fn) in STICKERS.items():
