@@ -1,49 +1,13 @@
-<#
-.SYNOPSIS
-    Sets the Windows accent color from the current wallpaper using matugen (Material You).
-
-.DESCRIPTION
-    Works with:
-      * the normal Windows wallpaper (images, slideshow)
-      * Wallpaper Engine (scene / web / application -> preview image, video -> first frame)
-      * any file you point it at with -Path (png/jpg/gif/mp4/webm/...)
-
-    Animated sources (GIF, video) are reduced to a single still frame first
-    (the first frame; a near-black first frame is skipped unless -NoBlackSkip),
-    then matugen builds the Material You palette from that frame and the
-    chosen role (default: primary) becomes the Windows accent color.
-
-    Needs: matugen on PATH (or -MatugenPath); ffmpeg on PATH (or -FfmpegPath)
-    only for video wallpapers.
-
-.EXAMPLE
-    .\Set-WallpaperAccent.ps1
-    One-shot: detect the wallpaper, apply the accent.
-
-.EXAMPLE
-    .\Set-WallpaperAccent.ps1 -Watch
-    Keep running and re-apply whenever the wallpaper changes.
-
-.EXAMPLE
-    .\Set-WallpaperAccent.ps1 -Install -ShowOnTaskbar
-    Register a hidden logon task that runs -Watch (plus the same options).
-
-.EXAMPLE
-    .\Set-WallpaperAccent.ps1 -Source File -Path D:\live\bg.mp4 -Mode Dark
-#>
 [CmdletBinding()]
 param(
     [ValidateSet('Auto', 'Windows', 'WallpaperEngine', 'File')]
     [string]$Source = 'Auto',
 
-    # Used with -Source File
     [string]$Path,
 
-    # Default: follow the system "apps" theme
     [ValidateSet('Dark', 'Light')]
     [string]$Mode,
 
-    # Which Material You color becomes the Windows accent
     [ValidateSet('primary', 'secondary', 'tertiary', 'primary_container', 'secondary_container', 'tertiary_container')]
     [string]$Role = 'primary',
 
@@ -51,24 +15,20 @@ param(
     [string]$MatugenPath = 'matugen',
     [string]$FfmpegPath = 'ffmpeg',
 
-    # Folder that contains Wallpaper Engine's config.json (auto-detected via Steam if omitted)
     [string]$WallpaperEngineDir,
 
     [switch]$ShowOnTaskbar,
     [switch]$ShowOnTitleBars,
     [switch]$RestartExplorer,
 
-    # Do not skip a (nearly) black first video frame
     [switch]$NoBlackSkip,
 
     [switch]$Watch,
     [ValidateRange(1, 3600)]
     [int]$Interval = 5,
 
-    # Re-apply even if the wallpaper did not change
     [switch]$Force,
 
-    # Print the color, do not touch the registry
     [switch]$DryRun,
 
     [switch]$Install,
@@ -80,14 +40,13 @@ $TaskName = 'WallpaperAccent'
 $StateDir = Join-Path $env:LOCALAPPDATA 'wallpaper-accent'
 $StateFile = Join-Path $StateDir 'state.json'
 $VideoExt = '.mp4', '.webm', '.mkv', '.avi', '.mov', '.m4v', '.wmv', '.flv'
-$DrawingExt = '.gif', '.bmp', '.tif', '.tiff'      # decoded by System.Drawing (first frame)
-$DirectExt = '.png', '.jpg', '.jpeg'               # handed to matugen as-is
+$DrawingExt = '.gif', '.bmp', '.tif', '.tiff'
+$DirectExt = '.png', '.jpg', '.jpeg'
 
 function Log([string]$Message) {
     Write-Host ("[{0}] {1}" -f (Get-Date -Format 'HH:mm:ss'), $Message)
 }
 
-# ---------------------------------------------------------------- install / uninstall
 
 if ($Uninstall) {
     Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false -ErrorAction SilentlyContinue
@@ -114,7 +73,6 @@ if ($Install) {
     return
 }
 
-# ---------------------------------------------------------------- native helpers
 
 Add-Type -AssemblyName System.Drawing
 if (-not ('WallpaperAccent.Native' -as [type])) {
@@ -130,7 +88,6 @@ function Find-Tool([string]$Name, [string]$Hint) {
     return $cmd.Source
 }
 
-# ---------------------------------------------------------------- wallpaper sources
 
 function Get-FileSignature([string[]]$Files) {
     ($Files | Where-Object { $_ -and (Test-Path -LiteralPath $_) } | ForEach-Object {
@@ -140,7 +97,6 @@ function Get-FileSignature([string[]]$Files) {
 }
 
 function Get-WindowsWallpaper {
-    # TranscodedWallpaper always holds the *current* image (also for slideshows).
     $transcoded = Join-Path $env:APPDATA 'Microsoft\Windows\Themes\TranscodedWallpaper'
     $registry = (Get-ItemProperty 'HKCU:\Control Panel\Desktop' -Name WallPaper -ErrorAction SilentlyContinue).WallPaper
     $file = $null
@@ -191,7 +147,6 @@ function Find-WallpaperEngineConfig {
 function Get-WallpaperEngineWallpaper {
     $config = Find-WallpaperEngineConfig
     if (-not $config) { return $null }
-    # Regex instead of ConvertFrom-Json: config.json has per-user keys and PS 5.1 chokes on some of them.
     $raw = Get-Content -LiteralPath $config -Raw
     $m = [regex]::Match($raw, '"selectedwallpapers"[\s\S]*?"file"\s*:\s*"((?:[^"\\]|\\.)*)"')
     if (-not $m.Success) { return $null }
@@ -213,12 +168,10 @@ function Get-WallpaperEngineWallpaper {
                 Select-Object -First 1 -ExpandProperty FullName
         }
         if ("$($project.type)" -ieq 'video' -and $main -and (Test-Path -LiteralPath $main)) {
-            # real video: take its first frame; the preview is only a fallback
             $media = $main
             $fallback = $preview
         }
         else {
-            # scene / web / application have no raw frames to read: the preview is the best stand-in
             $media = $preview
             if (-not $media) { return $null }
         }
@@ -252,7 +205,6 @@ function Get-WallpaperSource {
     }
 }
 
-# ---------------------------------------------------------------- still frame
 
 function Test-MostlyBlack([string]$Png) {
     $bmp = New-Object System.Drawing.Bitmap $Png
@@ -295,18 +247,16 @@ function Get-StillFrame($Src) {
                 if (Export-VideoFrame $candidate $out) { return $out }
             }
             elseif ($DrawingExt -contains $ext) {
-                $img = [System.Drawing.Image]::FromFile($candidate)   # loads frame 0 of animated GIFs
+                $img = [System.Drawing.Image]::FromFile($candidate)
                 try { $img.Save($out, [System.Drawing.Imaging.ImageFormat]::Png) } finally { $img.Dispose() }
                 return $out
             }
             elseif ($DirectExt -contains $ext -or [string]::IsNullOrEmpty($ext)) {
-                # TranscodedWallpaper has no extension (it is a JPEG/PNG); matugen sniffs the format
                 $copy = Join-Path $StateDir 'frame.src'
                 Copy-Item -LiteralPath $candidate -Destination $copy -Force
                 return $copy
             }
             else {
-                # webp etc.: let ffmpeg decode it
                 if (Export-VideoFrame $candidate $out) { return $out }
             }
         }
@@ -315,7 +265,6 @@ function Get-StillFrame($Src) {
     throw 'No usable still frame could be produced from the wallpaper.'
 }
 
-# ---------------------------------------------------------------- matugen
 
 function ConvertTo-HexString($Value) {
     if ($null -eq $Value) { return $null }
@@ -328,9 +277,8 @@ function ConvertTo-HexString($Value) {
 
 function Get-MatugenColor([string]$Image, [string]$ThemeMode) {
     $exe = Find-Tool $MatugenPath 'Get it from https://github.com/InioX/matugen/releases or "cargo install matugen".'
-    $ErrorActionPreference = 'Continue'   # native stderr must not become a terminating error
+    $ErrorActionPreference = 'Continue'
     $base = @('image', $Image, '--json', 'hex', '--mode', $ThemeMode.ToLower(), '--type', $SchemeType)
-    # --dry-run keeps matugen from running the user's templates/hooks; very old/new builds may not know it
     $out = & $exe @($base + '--dry-run') 2>$null
     if ($LASTEXITCODE -ne 0) { $out = & $exe @base 2>$null }
     if ($LASTEXITCODE -ne 0 -or -not $out) { throw "matugen failed (exit $LASTEXITCODE)." }
@@ -338,7 +286,6 @@ function Get-MatugenColor([string]$Image, [string]$ThemeMode) {
     $json = ($out -join "`n") | ConvertFrom-Json
     $key = $ThemeMode.ToLower()
     $hex = $null
-    # layout A: colors.<role>.<mode>     layout B: colors.<mode>.<role>
     if ($json.colors.PSObject.Properties[$Role]) {
         $entry = $json.colors.$Role
         $hex = if ($entry.PSObject.Properties[$key]) { ConvertTo-HexString $entry.$key } else { ConvertTo-HexString $entry }
@@ -356,7 +303,6 @@ function Get-MatugenColor([string]$Image, [string]$ThemeMode) {
         [Convert]::ToInt32($hex.Substring(4, 2), 16))
 }
 
-# ---------------------------------------------------------------- applying the color
 
 function Get-Shade([int[]]$Rgb, [int[]]$Target, [double]$Amount) {
     , [int[]]@(0..2 | ForEach-Object { [int][Math]::Round($Rgb[$_] + ($Target[$_] - $Rgb[$_]) * $Amount) })
@@ -374,7 +320,6 @@ function Set-Dword([string]$Key, [string]$Name, [uint32]$Value) {
 function Set-WindowsAccent([int[]]$Rgb) {
     $white = 255, 255, 255
     $black = 0, 0, 0
-    # lightest -> darkest, slot 3 is the accent itself (same layout Settings writes)
     $palette = @(
         (Get-Shade $Rgb $white 0.6), (Get-Shade $Rgb $white 0.4), (Get-Shade $Rgb $white 0.2),
         $Rgb,
@@ -382,7 +327,7 @@ function Set-WindowsAccent([int[]]$Rgb) {
     )
     $bytes = New-Object System.Collections.Generic.List[byte]
     foreach ($c in $palette) { $bytes.AddRange([byte[]]@($c[0], $c[1], $c[2], 0)) }
-    $bytes.AddRange([byte[]]@(0xF7, 0x63, 0x0C, 0))   # slot 7 is unused; this is Windows' default value
+    $bytes.AddRange([byte[]]@(0xF7, 0x63, 0x0C, 0))
 
     $abgr = { param($c) [uint32](4278190080 -bor ($c[2] -shl 16) -bor ($c[1] -shl 8) -bor $c[0]) }
     $argb = { param($c) [uint32](3288334336 -bor ($c[0] -shl 16) -bor ($c[1] -shl 8) -bor $c[2]) }
@@ -402,7 +347,6 @@ function Set-WindowsAccent([int[]]$Rgb) {
     if ($ShowOnTaskbar) {
         Set-Dword 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize' 'ColorPrevalence' 1
     }
-    # stop Windows from re-deriving the accent itself ("Automatic")
     Set-Dword 'HKCU:\Control Panel\Desktop' 'AutoColorization' 0
 
     $r = [UIntPtr]::Zero
@@ -416,7 +360,6 @@ function Set-WindowsAccent([int[]]$Rgb) {
     }
 }
 
-# ---------------------------------------------------------------- main
 
 function Get-ThemeMode {
     if ($Mode) { return $Mode }
